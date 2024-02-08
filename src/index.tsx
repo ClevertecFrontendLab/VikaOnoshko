@@ -2,12 +2,13 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { HashRouter, Route, Routes } from 'react-router-dom';
+import 'antd/dist/antd.css';
 
 import { store } from '@redux/configure-store';
 import { MainPage } from './pages';
 
 import 'normalize.css';
-import './index.css';
+import './index.less';
 
 const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);
