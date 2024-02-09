@@ -1,8 +1,10 @@
 import './main-page.less';
 import {
+    CalendarFilled,
     CalendarOutlined,
     HeartFilled,
     IdcardOutlined,
+    ProfileFilled,
     SettingOutlined,
     TrophyFilled,
 } from '@ant-design/icons';
@@ -10,6 +12,8 @@ import { Layout, Menu, Breadcrumb, Space, Typography, Image, Button } from 'antd
 import React, { useState } from 'react';
 import { blue } from '@ant-design/colors';
 import Logo from '@public/logo.png';
+import Exit from '@public/exit.svg';
+import { MainPageCard } from '@components/main-page';
 
 const { Header, Sider, Content } = Layout;
 const { Title } = Typography;
@@ -27,11 +31,11 @@ export const MainPage: React.FC = () => {
                 className='slider'
                 width={208}
             >
-                <div className='slider__header'>
-                    <div className='slider__logo'>
-                        <Image src={Logo} />
-                    </div>
-                </div>
+                <Space className='slider__header'>
+                    <Space className='slider__logo'>
+                        <Image src={Logo} preview={false} />
+                    </Space>
+                </Space>
                 <Menu
                     className='slider__nav'
                     mode='inline'
@@ -57,14 +61,24 @@ export const MainPage: React.FC = () => {
                         },
                         {
                             key: '4',
-                            icon: <IdcardOutlined className='icon' style={{ color: blue[9] }} />,
+                            icon: (
+                                <IdcardOutlined
+                                    className='icon icon-person'
+                                    style={{ color: blue[9] }}
+                                />
+                            ),
                             label: 'Профиль',
                             className: 'slider__item',
                         },
                     ]}
                 />
 
-                <div className='slider-footer'>vff</div>
+                <Space className='slider-footer'>
+                    <Button className='slider-footer__button'>
+                        <Image src={Exit} preview={false} className='slider-footer__img' />
+                        <Typography.Text className='slider-footer__text'>Выход</Typography.Text>
+                    </Button>
+                </Space>
             </Sider>
             <Layout className='main-layout__body'>
                 <Header className='main-layout__header'>
@@ -77,27 +91,57 @@ export const MainPage: React.FC = () => {
                         onClick: () => setCollapsed(!collapsed),
                     })} */}
 
-                    <Space className='main-header__title'>
-                        <Title className='main-header__text' level={1}>
+                    <Space className='header__title'>
+                        <Title className='header__text' level={1}>
                             Приветствуем тебя в CleverFit — приложении, которое поможет тебе
                             добиться своей мечты!
                         </Title>
-                        <Button className='main-header__settings'>
+                        <Button className='header__settings'>
                             <SettingOutlined />
                             <Typography.Text>Настройки</Typography.Text>
                         </Button>
                     </Space>
                 </Header>
+                <Content className='main-layout__content'>
+                    <Space className='main-page__possibilities'>
+                        <Space className='main-page__preview'>
+                            <Typography.Paragraph className='main-page__preview-description'>
+                                С CleverFit ты сможешь:
+                                <br /> — планировать свои тренировки на календаре, выбирая тип и
+                                уровень нагрузки; <br />— отслеживать свои достижения в разделе
+                                статистики, сравнивая свои результаты <br />с нормами и рекордами;
+                                <br /> — создавать свой профиль, где ты можешь загружать свои фото,
+                                видео и отзывы <br />о тренировках; <br />— выполнять расписанные
+                                тренировки для разных частей тела, следуя подробным инструкциям и
+                                советам профессиональных тренеров.
+                            </Typography.Paragraph>
+                        </Space>
 
-                <Content
-                    className='site-layout-background'
-                    style={{
-                        margin: '24px 16px',
-                        padding: 24,
-                        minHeight: 280,
-                    }}
-                >
-                    <span style={{ color: blue.primary }}>Content</span>
+                        <Space className='main-page__tagline'>
+                            <Typography.Title level={4}>
+                                CleverFit — это не просто приложение, а твой личный помощник в мире
+                                фитнеса. Не откладывай на завтра — начни тренироваться уже сегодня!
+                            </Typography.Title>
+                        </Space>
+
+                        <Space className='main-page__cards' size={'middle'}>
+                            <MainPageCard
+                                title='Расписать тренировки'
+                                icon={<HeartFilled />}
+                                linkText='Тренировки'
+                            />
+                            <MainPageCard
+                                title='Назначить календарь'
+                                icon={<CalendarFilled />}
+                                linkText='Календарь'
+                            />
+                            <MainPageCard
+                                title='Заполнить профиль'
+                                icon={<ProfileFilled />}
+                                linkText='Профиль'
+                            />
+                        </Space>
+                    </Space>
                 </Content>
             </Layout>
         </Layout>

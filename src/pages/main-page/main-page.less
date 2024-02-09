@@ -7,6 +7,12 @@
 .slider {
     background-color: @background;
     padding-top: 30px;
+    box-shadow: 0px 2px 8px 0px @shadow;
+
+    .ant-layout-sider-children {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .slider__logo {
@@ -19,6 +25,8 @@
 
 .slider__nav {
     margin-top: 51px;
+    height: 100%;
+    border-right: none;
 
     .ant-menu-item-icon {
         font-size: 15px;
@@ -48,21 +56,32 @@
         &.ant-menu-item:after {
             display: none;
         }
+
+        &.ant-menu-item:active,
+        .ant-menu-submenu-title:active {
+            background: none;
+        }
+
+        &.ant-menu-item-selected,
+        &.ant-menu-item:hover {
+            color: inherit;
+        }
     }
 }
 
 .main-layout__header {
-    padding: 14px 24px;
+    padding: 14px 24px 19px;
     background-color: @header-background;
     height: auto;
 }
 
-.main-header__title {
+.header__title {
     padding: 8px 0 0;
     display: flex;
     align-items: flex-start;
+    justify-content: space-between;
 
-    .main-header__text {
+    .header__text {
         padding: 4px 0;
         display: flex;
         align-items: flex-start;
@@ -70,7 +89,7 @@
     }
 }
 
-.main-header__settings {
+.header__settings {
     background: transparent;
     border: none;
     box-shadow: none;
@@ -78,4 +97,72 @@
     display: flex;
     padding: 3px 17px;
     height: auto;
+}
+
+.slider-footer {
+    border-top: 1px solid @line;
+}
+.slider-footer__button {
+    width: 100%;
+    text-align: left;
+    height: auto;
+    border: none;
+    padding: 9px 16px;
+    box-shadow: none;
+
+    .slider-footer__img {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+    }
+
+    .slider-footer__text {
+        margin-left: 25px;
+    }
+}
+
+.main-layout__content {
+    display: block;
+    padding: 24px;
+    background: no-repeat center/cover url('@public/lite.jpg');
+}
+
+.main-page {
+    &__possibilities {
+        max-width: 752px;
+        display: block;
+    }
+    &__preview {
+        padding: 24px;
+        background-color: @background;
+    }
+    &__preview-description {
+        font-size: 16px;
+        color: @text;
+        font-weight: 400;
+        line-height: 21px;
+        letter-spacing: 0em;
+        text-align: left;
+    }
+
+    &__tagline {
+        background: @background;
+        padding: 24px;
+        margin-top: 24px;
+        .ant-typography {
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 26px;
+            letter-spacing: 0;
+        }
+    }
+
+    &__cards {
+        margin-top: 16px;
+        display: flex;
+
+        & > * {
+            width: 100%;
+        }
+    }
 }
