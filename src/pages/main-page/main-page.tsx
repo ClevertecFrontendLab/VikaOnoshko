@@ -1,19 +1,20 @@
 import './main-page.less';
 import {
-    CalendarFilled,
+    AndroidFilled,
+    AppleFilled,
     CalendarOutlined,
     HeartFilled,
     IdcardOutlined,
-    ProfileFilled,
     SettingOutlined,
     TrophyFilled,
 } from '@ant-design/icons';
-import { Layout, Menu, Breadcrumb, Space, Typography, Image, Button } from 'antd';
+import { Layout, Menu, Breadcrumb, Space, Typography, Image, Button, Divider } from 'antd';
 import React, { useState } from 'react';
 import { blue } from '@ant-design/colors';
 import Logo from '@public/logo.png';
 import Exit from '@public/exit.svg';
 import { MainPageCard } from '@components/main-page';
+import { MyButton } from '@ui/button';
 
 const { Header, Sider, Content } = Layout;
 const { Title } = Typography;
@@ -119,8 +120,9 @@ export const MainPage: React.FC = () => {
 
                         <Space className='main-page__tagline'>
                             <Typography.Title level={4}>
-                                CleverFit — это не просто приложение, а твой личный помощник в мире
-                                фитнеса. Не откладывай на завтра — начни тренироваться уже сегодня!
+                                CleverFit — это не просто приложение, а твой личный помощник
+                                <br /> в мире фитнеса. Не откладывай на завтра — начни тренироваться
+                                уже сегодня!
                             </Typography.Title>
                         </Space>
 
@@ -132,14 +134,39 @@ export const MainPage: React.FC = () => {
                             />
                             <MainPageCard
                                 title='Назначить календарь'
-                                icon={<CalendarFilled />}
+                                icon={<CalendarOutlined />}
                                 linkText='Календарь'
                             />
                             <MainPageCard
                                 title='Заполнить профиль'
-                                icon={<ProfileFilled />}
+                                icon={<IdcardOutlined />}
                                 linkText='Профиль'
                             />
+                        </Space>
+                    </Space>
+                    <Space className='main-page__reviews'>
+                        <Typography.Text>Смотреть отзывы</Typography.Text>
+                    </Space>
+
+                    <Space className='main-page__download' direction='vertical'>
+                        <Space className='main-page__download__header' direction='vertical'>
+                            <MyButton className='main-page__download__link' type='link'>
+                                Скачать на телефон
+                            </MyButton>
+                            <Typography.Paragraph className='main-page__download__text'>
+                                Доступно в PRO-тарифе
+                            </Typography.Paragraph>
+                        </Space>
+                        <Divider className='main-page__download__divider' />
+                        <Space className='main-page__download__footer'>
+                            <MyButton className='main-page__download__link' type='link'>
+                                <AndroidFilled />
+                                Android OS
+                            </MyButton>
+                            <MyButton className='main-page__download__link' type='link'>
+                                <AppleFilled />
+                                Apple iOS
+                            </MyButton>
                         </Space>
                     </Space>
                 </Content>

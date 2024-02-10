@@ -1,4 +1,6 @@
 import './main-page-card.less';
+import { geekblue } from '@ant-design/colors';
+import { MyButton } from '@ui/button';
 import { Divider, Space, Typography } from 'antd';
 
 type MainPageCardProps = {
@@ -14,10 +16,10 @@ export const MainPageCard = ({ title, icon, linkText }: MainPageCardProps) => {
                 {title}
             </Typography.Title>
             <Divider className='main-page-card__divider' />
-            <Typography.Link className='main-page-card__link'>
+            <MyButton className='main-page-card__link' type='link'>
                 {icon}
                 <Typography.Text>{linkText}</Typography.Text>
-            </Typography.Link>
+            </MyButton>
         </Space>
     );
 };
