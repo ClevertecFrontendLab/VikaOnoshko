@@ -1,0 +1,116 @@
+@import '@style/constants.less';
+
+.slider {
+    position: relative;
+    background-color: @background;
+    padding-top: 30px;
+    box-shadow: 0 2px 8px 0 @shadow;
+
+    &__body {
+    }
+
+    .ant-layout-sider-children {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__logo {
+        padding: 15px 29px;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &__nav {
+        margin-top: 51px;
+        height: 100%;
+        border-right: none;
+
+        .ant-menu-item-icon {
+            font-size: 15px;
+        }
+
+        .ant-menu-title-content {
+            font-size: 14px;
+        }
+
+        label {
+            margin-left: 10px;
+        }
+
+        .slider__item {
+            margin: 18px 0;
+            padding: 0 16px;
+            &:first-child {
+                margin-top: 0;
+            }
+            &.ant-menu-item-selected {
+                background-color: transparent;
+            }
+            &.ant-menu-item-active {
+                color: inherit;
+            }
+
+            &.ant-menu-item:after {
+                display: none;
+            }
+
+            &.ant-menu-item:active,
+            .ant-menu-submenu-title:active {
+                background: none;
+            }
+
+            &.ant-menu-item-selected,
+            &.ant-menu-item:hover {
+                color: inherit;
+            }
+        }
+    }
+
+    .slider-footer {
+        border-top: 1px solid @line;
+        width: 100%;
+    }
+
+    .slider-footer__button {
+        width: 100%;
+        text-align: left;
+        height: auto;
+        border: none;
+        padding: 9px 16px;
+        box-shadow: none;
+
+        .slider-footer__img {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+        }
+
+        .slider-footer__text {
+            margin-left: 25px;
+        }
+    }
+
+    .slider__trigger-wrapper {
+        position: absolute;
+        top: calc(50vh - 33px);
+        right: -20px;
+        filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
+
+        // filter: drop-shadow(-1px 6px 3px rgba(50, 50, 0, 0.5));
+        z-index: 1;
+    }
+
+    .slider__trigger {
+        width: 20px;
+        height: 66px;
+        background: @background;
+        color: rgba(140, 140, 140, 1);
+        clip-path: polygon(0 0, 100% 10%, 100% 90%, 0% 100%);
+
+        & > * {
+            margin: auto;
+        }
+    }
+}

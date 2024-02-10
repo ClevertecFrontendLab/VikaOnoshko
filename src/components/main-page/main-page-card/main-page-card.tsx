@@ -1,7 +1,6 @@
-import './main-page-card.less';
-import { geekblue } from '@ant-design/colors';
-import { MyButton } from '@ui/button';
 import { Divider, Space, Typography } from 'antd';
+import { MyButton } from '@ui/button';
+import './main-page-card.less';
 
 type MainPageCardProps = {
     linkText: string;
