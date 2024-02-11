@@ -12,14 +12,22 @@
     }
 
     &__logo {
-        padding: 15px 29px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 10px 0px 0;
+
+        &_collapsed {
+            padding: 20px 0;
+        }
         .ant-img {
             width: 100%;
         }
     }
 
     &__nav {
-        margin-top: 51px;
+        z-index: 2;
+        margin-top: 67px;
         height: 100%;
         border-right: none;
 
@@ -62,6 +70,16 @@
                 color: inherit;
             }
         }
+
+        &_collapsed {
+            margin-top: 48px;
+        }
+    }
+
+    &__header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .slider-footer {
@@ -109,4 +127,8 @@
             margin: auto;
         }
     }
+}
+
+.ant-layout-sider-collapsed .slider__item {
+    padding-left: 24px !important;
 }

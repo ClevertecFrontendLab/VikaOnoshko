@@ -8,7 +8,11 @@
 }
 
 .main-layout__body {
+    position: relative;
     background: transparent;
+    min-height: 100vh;
+    max-height: 100vh;
+    overflow: auto;
 }
 
 .header__title {
@@ -36,10 +40,10 @@
 }
 
 .main-layout__content {
-    position: relative;
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
     padding: 24px;
-    // background: no-repeat center/cover url('@public/lite.jpg');
 }
 
 .main-page {
@@ -67,13 +71,9 @@
     }
 
     &__reviews {
-        padding: 9px;
-        position: absolute;
+        padding: 9px 16px;
 
-        right: 0;
-        bottom: 40px;
-        left: 31px;
-
+        margin-bottom: 16px;
         span {
             color: @text_lite;
             line-height: 20.8px;

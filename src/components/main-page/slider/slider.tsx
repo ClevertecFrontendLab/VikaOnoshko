@@ -29,14 +29,20 @@ export const Slider: React.FC = () => {
             collapsedWidth={64}
         >
             <Space className='slider__header'>
-                <Space className='slider__logo'>
+                <Space
+                    className={`slider__logo ${
+                        collapsed ? 'slider__logo_collapsed' : 'slider__logo_opened'
+                    }`}
+                >
                     <Image src={collapsed ? SmallLogo : Logo} preview={false} />
                 </Space>
             </Space>
             <Menu
-                className='slider__nav'
+                className={`slider__nav ${
+                    collapsed ? 'slider__nav_collapsed' : 'slider__nav_opened'
+                }`}
                 mode='inline'
-                inlineIndent={17}
+                // inlineIndent={17}
                 items={[
                     {
                         key: '1',
@@ -73,7 +79,9 @@ export const Slider: React.FC = () => {
             <Space className='slider-footer'>
                 <Button className='slider-footer__button'>
                     <Image src={Exit} preview={false} className='slider-footer__img' />
-                    <Typography.Text className='slider-footer__text'>Выход</Typography.Text>
+                    {!collapsed && (
+                        <Typography.Text className='slider-footer__text'>Выход</Typography.Text>
+                    )}
                 </Button>
             </Space>
 

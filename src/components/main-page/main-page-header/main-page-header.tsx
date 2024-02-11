@@ -12,8 +12,8 @@ export const MainPageHeader = () => {
             </Breadcrumb>
             <Space className='header__title'>
                 <Title className='header__text' level={1}>
-                    Приветствуем тебя в CleverFit — приложении, которое поможет тебе добиться своей
-                    мечты!
+                    Приветствуем тебя в CleverFit — приложении,
+                    <br /> которое поможет тебе добиться своей мечты!
                 </Title>
                 <Button className='header__settings'>
                     <SettingOutlined />

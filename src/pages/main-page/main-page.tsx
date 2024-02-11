@@ -41,6 +41,7 @@ export const MainPage: React.FC = () => {
                             />
                         </Space>
                     </Space>
+
                     <Space className='main-page__reviews'>
                         <Typography.Text>Смотреть отзывы</Typography.Text>
                     </Space>
