@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { blue } from '@ant-design/colors';
 import Logo from '@public/logo.png';
+import SmallLogo from '@public/fit.png';
 import Exit from '@public/exit.svg';
 import {
     CalendarOutlined,
@@ -25,10 +26,11 @@ export const Slider: React.FC = () => {
             theme='light'
             className='slider'
             width={208}
+            collapsedWidth={64}
         >
             <Space className='slider__header'>
                 <Space className='slider__logo'>
-                    <Image src={Logo} preview={false} />
+                    <Image src={collapsed ? SmallLogo : Logo} preview={false} />
                 </Space>
             </Space>
             <Menu
