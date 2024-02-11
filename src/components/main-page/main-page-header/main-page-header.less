@@ -5,3 +5,61 @@
     background-color: @header-background;
     height: auto;
 }
+
+.header {
+    &__title {
+        padding: 8px 0 0;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    &__settings {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        align-items: center;
+        display: flex;
+        padding: 3px 17px;
+        height: auto;
+    }
+
+    &__text {
+        padding: 4px 0;
+        display: flex;
+        align-items: flex-start;
+
+        &.ant-typography {
+            line-height: 1.3;
+        }
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .main-layout__header {
+        padding: 16px 24px;
+    }
+
+    .header {
+        &__title {
+            .header__text {
+                font-size: 24px;
+                font-weight: 500;
+                line-height: 31.2px;
+            }
+        }
+
+        &__settings {
+            align-items: flex-start;
+            justify-content: flex-end;
+            display: flex;
+            .anticon {
+                display: none;
+            }
+
+            &.ant-btn {
+                padding: 0 15px 0 0;
+                background-color: transparent;
+            }
+        }
+    }
+}
