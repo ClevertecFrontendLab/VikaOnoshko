@@ -1,6 +1,8 @@
 import { SettingOutlined } from '@ant-design/icons';
-import './main-page-header.less';
 import { Layout, Breadcrumb, Space, Typography, Button } from 'antd';
+
+import './main-page-header.less';
+
 const { Header } = Layout;
 const { Title } = Typography;
 

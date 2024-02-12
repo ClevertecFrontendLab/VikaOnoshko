@@ -1,4 +1,5 @@
 import { Space, Typography } from 'antd';
+
 import './main-page-preview.less';
 
 export const MainPagePreview = () => {

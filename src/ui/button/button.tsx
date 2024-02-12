@@ -1,5 +1,6 @@
-import './button.less';
 import { Button } from 'antd';
+
+import './button.less';
 
 type ButtonProps = {
     className?: string;

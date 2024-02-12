@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Layout, Space, Typography } from 'antd';
+import { Col, Layout, Row, Space, Typography } from 'antd';
 import { CalendarOutlined, HeartFilled, IdcardOutlined } from '@ant-design/icons';
 import { MainPageCard } from '@components/main-page';
 import { Slider } from '@components/main-page/slider';
@@ -23,27 +23,34 @@ export const MainPage: React.FC = () => {
                     <Space className='main-page__possibilities'>
                         <MainPagePreview />
                         <MainPageTagline />
-                        <Space className='main-page__cards' size={'middle'}>
-                            <MainPageCard
-                                title='Расписать тренировки'
-                                icon={<HeartFilled />}
-                                linkText='Тренировки'
-                            />
-                            <MainPageCard
-                                title='Назначить календарь'
-                                icon={<CalendarOutlined />}
-                                linkText='Календарь'
-                            />
-                            <MainPageCard
-                                title='Заполнить профиль'
-                                icon={<IdcardOutlined />}
-                                linkText='Профиль'
-                            />
-                        </Space>
+                        {/* <Space className='main-page__cards' size={'middle'}> */}
+                        <Row gutter={16} className='main-page__cards'>
+                            <Col span={8}>
+                                <MainPageCard
+                                    title='Расписать тренировки'
+                                    icon={<HeartFilled />}
+                                    linkText='Тренировки'
+                                />
+                            </Col>
+                            <Col span={8}>
+                                <MainPageCard
+                                    title='Назначить календарь'
+                                    icon={<CalendarOutlined />}
+                                    linkText='Календарь'
+                                />
+                            </Col>
+                            <Col span={8}>
+                                <MainPageCard
+                                    title='Заполнить профиль'
+                                    icon={<IdcardOutlined />}
+                                    linkText='Профиль'
+                                />
+                            </Col>
+                        </Row>
+                        {/* </Space> */}
                     </Space>
-
                     <Space className='main-page__reviews'>
-                        <Typography.Text>Смотреть отзывы</Typography.Text>
+                        <Typography.Link>Смотреть отзывы</Typography.Link>
                     </Space>
                     <Download />
                 </Content>

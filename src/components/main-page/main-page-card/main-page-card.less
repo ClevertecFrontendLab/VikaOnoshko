@@ -4,9 +4,36 @@
     .ant-card-head-title {
         padding: 7px 0;
         text-align: center;
+        white-space: normal;
     }
     .ant-card-body {
         padding: 14px;
         text-align: center;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .main-page-card {
+        .ant-card-head {
+            padding: 12px 24px;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .ant-card-head-title {
+            padding: 0 0;
+            line-height: 21px;
+            letter-spacing: 0;
+            letter-spacing: -0.1px;
+            text-align: left;
+        }
+
+        .ant-card-body {
+            padding: 15px 0;
+            letter-spacing: -0.1px;
+        }
+        &__link > span {
+            margin-right: 5px;
+        }
     }
 }

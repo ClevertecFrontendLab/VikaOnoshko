@@ -11,9 +11,11 @@ import {
     MenuUnfoldOutlined,
     TrophyFilled,
 } from '@ant-design/icons';
-const { Sider } = Layout;
 import { Layout, Menu, Space, Typography, Image, Button } from 'antd';
+
 import './slider.less';
+
+const { Sider } = Layout;
 
 export const Slider: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
