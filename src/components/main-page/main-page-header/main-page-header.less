@@ -63,3 +63,36 @@
         }
     }
 }
+
+@media screen and (max-width: 660px) {
+    .main-layout__header {
+        padding: 14px 24px 18px;
+    }
+
+    .header {
+        &__title {
+            padding: 0;
+            .header__text {
+                font-size: 20px;
+                font-weight: 500;
+                line-height: 26px;
+            }
+        }
+
+        &__settings .anticon {
+            display: flex;
+        }
+
+        &__settings {
+            .ant-typography {
+                display: none;
+            }
+            &.ant-btn {
+                padding: 9px;
+                border-radius: 100%;
+                background-color: rgba(255, 255, 255, 1);
+                box-shadow: 0px 2px 0px 0px rgba(0, 0, 0, 0.043);
+            }
+        }
+    }
+}

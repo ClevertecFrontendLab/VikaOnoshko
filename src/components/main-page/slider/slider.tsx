@@ -17,18 +17,28 @@ import './slider.less';
 
 const { Sider } = Layout;
 
+const SIZES = {
+    small: { collapsedWidth: 0, width: 108 },
+    normal: { collapsedWidth: 64, width: 208 },
+};
+
 export const Slider: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
+    const [size, setSize] = useState(SIZES.normal);
+    const showIcon = size === SIZES.normal;
 
     return (
         <Sider
+            {...size}
             trigger={null}
             collapsible
-            collapsed={collapsed}
+            collapsed={!collapsed}
             theme='light'
             className='slider'
-            width={208}
-            collapsedWidth={64}
+            breakpoint='xs'
+            onBreakpoint={(broken) => {
+                setSize(broken ? SIZES.small : SIZES.normal);
+            }}
         >
             <Space className='slider__header'>
                 <Space
@@ -44,29 +54,34 @@ export const Slider: React.FC = () => {
                     collapsed ? 'slider__nav_collapsed' : 'slider__nav_opened'
                 }`}
                 mode='inline'
-                // inlineIndent={17}
                 items={[
                     {
                         key: '1',
-                        icon: <CalendarOutlined className='icon' style={{ color: blue[9] }} />,
+                        icon: showIcon && (
+                            <CalendarOutlined className='icon' style={{ color: blue[9] }} />
+                        ),
                         label: 'Календарь',
                         className: 'slider__item',
                     },
                     {
                         key: '2',
-                        icon: <HeartFilled className='icon' style={{ color: blue[9] }} />,
+                        icon: showIcon && (
+                            <HeartFilled className='icon' style={{ color: blue[9] }} />
+                        ),
                         label: 'Тренировки',
                         className: 'slider__item',
                     },
                     {
                         key: '3',
-                        icon: <TrophyFilled className='icon' style={{ color: blue[9] }} />,
+                        icon: showIcon && (
+                            <TrophyFilled className='icon' style={{ color: blue[9] }} />
+                        ),
                         label: 'Достижения',
                         className: 'slider__item',
                     },
                     {
                         key: '4',
-                        icon: (
+                        icon: showIcon && (
                             <IdcardOutlined
                                 className='icon icon-person'
                                 style={{ color: blue[9] }}

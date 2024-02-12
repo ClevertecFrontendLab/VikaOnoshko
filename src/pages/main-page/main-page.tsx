@@ -24,22 +24,22 @@ export const MainPage: React.FC = () => {
                         <MainPagePreview />
                         <MainPageTagline />
                         {/* <Space className='main-page__cards' size={'middle'}> */}
-                        <Row gutter={16} className='main-page__cards'>
-                            <Col span={8}>
+                        <Row gutter={[16, 8]} className='main-page__cards'>
+                            <Col md={8} xs={24}>
                                 <MainPageCard
                                     title='Расписать тренировки'
                                     icon={<HeartFilled />}
                                     linkText='Тренировки'
                                 />
                             </Col>
-                            <Col span={8}>
+                            <Col md={8} xs={24}>
                                 <MainPageCard
                                     title='Назначить календарь'
                                     icon={<CalendarOutlined />}
                                     linkText='Календарь'
                                 />
                             </Col>
-                            <Col span={8}>
+                            <Col md={8} xs={24}>
                                 <MainPageCard
                                     title='Заполнить профиль'
                                     icon={<IdcardOutlined />}
@@ -49,10 +49,10 @@ export const MainPage: React.FC = () => {
                         </Row>
                         {/* </Space> */}
                     </Space>
+                    <Download />
                     <Space className='main-page__reviews'>
                         <Typography.Link>Смотреть отзывы</Typography.Link>
                     </Space>
-                    <Download />
                 </Content>
             </Layout>
         </Layout>
