@@ -102,7 +102,10 @@ export const Slider: React.FC = () => {
                 </Button>
             </Space>
 
-            <Space className='slider__trigger-wrapper'>
+            <Space
+                className='slider__trigger-wrapper'
+                data-test-id={showIcon ? 'sider-switch' : 'sider-switch-mobile'}
+            >
                 <Space className='slider__trigger'>
                     {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
                         className: 'trigger',
