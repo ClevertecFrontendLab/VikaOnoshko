@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Col, Layout, Row, Space, Typography } from 'antd';
-import { CalendarOutlined, HeartFilled, IdcardOutlined } from '@ant-design/icons';
+import { CalendarTwoTone, HeartFilled, IdcardOutlined } from '@ant-design/icons';
 import { MainPageCard } from '@components/main-page';
 import { Slider } from '@components/main-page/slider';
 import { MainPageHeader } from '@components/main-page/main-page-header';
@@ -10,6 +10,7 @@ import { MainPagePreview } from '@components/main-page/main-page-preview';
 import { MainPageTagline } from '@components/main-page/main-page-tagline/main-page-tagline';
 
 import './main-page.less';
+import { blue } from '@ant-design/colors';
 
 const { Content } = Layout;
 
@@ -23,7 +24,6 @@ export const MainPage: React.FC = () => {
                     <Space className='main-page__possibilities'>
                         <MainPagePreview />
                         <MainPageTagline />
-                        {/* <Space className='main-page__cards' size={'middle'}> */}
                         <Row gutter={[16, 8]} className='main-page__cards'>
                             <Col md={8} xs={24}>
                                 <MainPageCard
@@ -35,7 +35,7 @@ export const MainPage: React.FC = () => {
                             <Col md={8} xs={24}>
                                 <MainPageCard
                                     title='Назначить календарь'
-                                    icon={<CalendarOutlined />}
+                                    icon={<CalendarTwoTone twoToneColor={[blue[4], blue[4]]} />}
                                     linkText='Календарь'
                                 />
                             </Col>
@@ -47,11 +47,13 @@ export const MainPage: React.FC = () => {
                                 />
                             </Col>
                         </Row>
-                        {/* </Space> */}
                     </Space>
-                    <Download />
+
                     <Space className='main-page__reviews'>
-                        <Typography.Link>Смотреть отзывы</Typography.Link>
+                        <Space className='main-page__text'>
+                            <Typography.Link>Смотреть отзывы</Typography.Link>
+                        </Space>
+                        <Download />
                     </Space>
                 </Content>
             </Layout>

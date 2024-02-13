@@ -18,7 +18,7 @@
         display: flex;
         justify-content: space-between;
         flex-direction: column;
-        padding: 24px;
+        padding: 24px 24px 42px 24px;
     }
 }
 
@@ -42,13 +42,19 @@
     }
 
     &__reviews {
-        padding: 9px 16px;
-        margin-bottom: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+
         a {
             color: @text_lite;
             line-height: 20.8px;
             font-size: 16px;
         }
+    }
+
+    &__text {
+        padding: 10px;
     }
 }
 
@@ -56,6 +62,7 @@
     .main-layout {
         &__content {
             padding: 24px 16px 42px;
+            justify-content: flex-start;
         }
     }
 
@@ -69,11 +76,20 @@
         }
 
         &__reviews {
+            margin-top: 24px;
             margin-bottom: 0;
             text-align: center;
             display: flex;
+            flex-direction: column-reverse;
             justify-content: center;
             align-items: center;
+            & > * {
+                width: 100%;
+            }
+
+            & > .ant-space-item:first-child {
+                margin-top: 18px;
+            }
         }
     }
 }

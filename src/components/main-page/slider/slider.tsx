@@ -4,7 +4,7 @@ import Logo from '@public/logo.png';
 import SmallLogo from '@public/fit.png';
 import Exit from '@public/exit.svg';
 import {
-    CalendarOutlined,
+    CalendarTwoTone,
     HeartFilled,
     IdcardOutlined,
     MenuFoldOutlined,
@@ -32,7 +32,7 @@ export const Slider: React.FC = () => {
             {...size}
             trigger={null}
             collapsible
-            collapsed={!collapsed}
+            collapsed={collapsed}
             theme='light'
             className='slider'
             breakpoint='xs'
@@ -58,7 +58,7 @@ export const Slider: React.FC = () => {
                     {
                         key: '1',
                         icon: showIcon && (
-                            <CalendarOutlined className='icon' style={{ color: blue[9] }} />
+                            <CalendarTwoTone className='icon' twoToneColor={[blue[9], blue[9]]} />
                         ),
                         label: 'Календарь',
                         className: 'slider__item',
