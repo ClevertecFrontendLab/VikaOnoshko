@@ -1,0 +1,16 @@
+@import '@style/constants.less';
+
+.main-page__preview {
+    padding: 24px;
+    background-color: @background;
+    border-radius: 2px;
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.043);
+}
+
+@media screen and (max-width: 660px) {
+    .main-page__preview {
+        .ant-typography {
+            letter-spacing: 1px;
+        }
+    }
+}

@@ -1,0 +1,51 @@
+@import '@style/fonts';
+@import '@style/constants.less';
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Inter';
+    font-weight: 400;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        color: #213547;
+        background-color: #fff;
+    }
+    a:hover {
+        color: #747bff;
+    }
+    button {
+        background-color: #f9f9f9;
+    }
+}
+
+.ant-typography.ant-typography {
+    margin: 0;
+}
+
+.ant-menu-item.slider__item {
+    padding-left: 16px !important;
+}
+
+.ant-btn {
+    border: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: transparent;
+        color: black;
+        border: none;
+        box-shadow: none;
+
+        &:after {
+            display: none;
+        }
+    }
+
+    &:hover {
+        background-color: @background;
+    }
+}

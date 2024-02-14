@@ -1,34 +1,62 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import reactLogo from '/react.svg';
-import viteLogo from '/vite.svg';
-import tsLogo from '/ts.svg';
-import './main-page.css';
+import { Col, Layout, Row, Space, Typography } from 'antd';
+import { CalendarTwoTone, HeartFilled, IdcardOutlined } from '@ant-design/icons';
+import { MainPageCard } from '@components/main-page';
+import { Slider } from '@components/main-page/slider';
+import { MainPageHeader } from '@components/main-page/main-page-header';
+import { Download } from '@components/download';
+import { MainPagePreview } from '@components/main-page/main-page-preview';
+import { MainPageTagline } from '@components/main-page/main-page-tagline/main-page-tagline';
+
+import './main-page.less';
+import { blue } from '@ant-design/colors';
+
+const { Content } = Layout;
 
 export const MainPage: React.FC = () => {
-    const [count, setCount] = useState(0);
-
     return (
-        <>
-            <div>
-                <a href='https://vitejs.dev' target='_blank'>
-                    <img src={viteLogo} className='logo' alt='Vite logo' />
-                </a>
-                <a href='https://react.dev' target='_blank'>
-                    <img src={reactLogo} className='logo react' alt='React logo' />
-                </a>
-                <a href='https://www.typescriptlang.org/' target='_blank'>
-                    <img src={tsLogo} className='logo' alt='TS logo' />
-                </a>
-            </div>
-            <h1>Vite + React + TS</h1>
-            <div className='card'>
-                <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-                <p>
-                    Edit <code>src/pages/main-page.tsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
-        </>
+        <Layout className='main-layout'>
+            <Slider />
+            <Layout className='main-layout__body'>
+                <MainPageHeader />
+                <Content className='main-layout__content'>
+                    <Space className='main-page__possibilities'>
+                        <MainPagePreview />
+                        <MainPageTagline />
+                        <Row gutter={[16, 8]} className='main-page__cards'>
+                            <Col md={8} xs={24}>
+                                <MainPageCard
+                                    title='Расписать тренировки'
+                                    icon={<HeartFilled />}
+                                    linkText='Тренировки'
+                                />
+                            </Col>
+                            <Col md={8} xs={24}>
+                                <MainPageCard
+                                    title='Назначить календарь'
+                                    icon={<CalendarTwoTone twoToneColor={[blue[4], blue[4]]} />}
+                                    linkText='Календарь'
+                                />
+                            </Col>
+                            <Col md={8} xs={24}>
+                                <MainPageCard
+                                    title='Заполнить профиль'
+                                    icon={<IdcardOutlined />}
+                                    linkText='Профиль'
+                                />
+                            </Col>
+                        </Row>
+                    </Space>
+
+                    <Space className='main-page__reviews'>
+                        <Space className='main-page__text'>
+                            <Typography.Link>Смотреть отзывы</Typography.Link>
+                        </Space>
+                        <Download />
+                    </Space>
+                </Content>
+            </Layout>
+        </Layout>
     );
 };
