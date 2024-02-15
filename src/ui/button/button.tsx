@@ -7,6 +7,7 @@ type ButtonProps = {
     type?: 'primary' | 'secondary' | 'dashed' | 'link' | 'text';
     size?: 'medium' | 'large';
     children: React.ReactNode;
+    role?: 'submit' | 'button';
 };
 
 export const MyButton = ({
