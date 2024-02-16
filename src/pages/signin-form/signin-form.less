@@ -1,3 +1,5 @@
+@import '@style/constants.less';
+
 .form {
     width: 100%;
 
@@ -29,8 +31,17 @@
         .ant-form-item {
             margin-bottom: 0;
         }
+
         .forgot-password {
             letter-spacing: 1px;
+        }
+
+        a {
+            color: @text_lite;
+        }
+
+        .ant-checkbox-checked .ant-checkbox-inner {
+            background-color: @text_lite;
         }
     }
 
@@ -51,5 +62,26 @@
         .google-auth {
             letter-spacing: 1px;
         }
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .form__additional .forgot-password {
+        letter-spacing: 0.5px;
+    }
+
+    .button_secondary {
+        svg {
+            display: none;
+        }
+
+        .anticon + span {
+            margin-left: 0;
+            letter-spacing: 0;
+        }
+    }
+
+    .form__additional {
+        margin-bottom: 16px;
     }
 }

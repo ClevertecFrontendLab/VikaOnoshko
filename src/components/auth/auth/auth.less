@@ -1,4 +1,22 @@
+@import '@style/constants.less';
+
 .auth-form {
+    max-width: 540px;
+    padding: 64px 86px 174px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
+
+    & > * {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     &__container {
         height: 100vh;
         max-width: 1440px;
@@ -20,24 +38,6 @@
         & > .ant-space-item {
             z-index: 1;
         }
-    }
-}
-
-.auth-form {
-    max-width: 540px;
-    padding: 64px 86px 174px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 1);
-    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
-
-    & > * {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
 
     &__header {
@@ -76,6 +76,52 @@
 
         .ant-tabs-nav {
             margin-bottom: 24px;
+        }
+
+        .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+            color: @text_lite;
+        }
+
+        .ant-tabs-ink-bar {
+            background: @text_lite;
+        }
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .auth-form__container {
+        align-items: flex-start;
+    }
+    .auth-form {
+        margin-top: 200px;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .auth-form {
+        max-width: 328px;
+        padding: 32px 16px 124px 16px;
+        margin-top: 0;
+
+        &__container {
+            align-items: center;
+        }
+        &__header .auth-form__img {
+            width: 203px;
+            height: 50px;
+            margin-bottom: 32px;
+        }
+
+        .auth-form__body .ant-tabs-tab {
+            font-size: 14px;
+        }
+
+        .auth-form__body .ant-tabs-tab:nth-child(2) {
+            padding: 11px 30px;
+        }
+
+        .auth-form__body .ant-tabs-tab:nth-child(1) {
+            padding: 11px 57px;
         }
     }
 }
