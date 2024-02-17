@@ -1,5 +1,6 @@
 import { ErrorExit } from '@pages/error-exit';
 import { ErrorLogin } from '@pages/error-login';
+import { ErrorRegistration } from '@pages/error-registration';
 import { MainPage } from '@pages/main-page';
 import { SigninForm } from '@pages/signin-form';
 import { SignupForm } from '@pages/signup-form';
@@ -14,5 +15,6 @@ export const routes = (
         <Route path='/result/error-login' element={<ErrorLogin />} />
         <Route path='/result/success' element={<SuccessRegistration />} />
         <Route path='/result/error-user-exist' element={<ErrorExit />} />
+        <Route path='/result/error' element={<ErrorRegistration />} />
     </Routes>
 );
