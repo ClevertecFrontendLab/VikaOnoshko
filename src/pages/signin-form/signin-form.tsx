@@ -14,7 +14,7 @@ export const SigninForm: React.FC = () => {
     };
 
     return (
-        <Auth>
+        <Auth activeForm='signin'>
             <Form
                 className='form'
                 name='basic'

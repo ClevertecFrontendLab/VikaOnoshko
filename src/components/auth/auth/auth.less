@@ -1,81 +1,76 @@
 @import '@style/constants.less';
 
 .auth-form {
-    max-width: 540px;
-    padding: 64px 86px 174px;
+    height: 100vh;
+    max-width: 1440px;
+    margin: auto;
+    width: 100%;
+    fill: rgba(121, 156, 212, 0.5);
     display: flex;
     justify-content: center;
-    flex-direction: column;
     align-items: center;
-    background-color: rgba(255, 255, 255, 1);
-    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
 
-    & > * {
+    &:before {
+        position: absolute;
+        height: 100%;
         width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        content: '';
+        background: no-repeat center/cover url('@public/page_light.png');
+        filter: blur(12px);
+    }
+
+    & > .ant-space-item {
+        z-index: 1;
+        width: 100%;
+        max-width: 540px;
     }
 
     &__container {
-        height: 100vh;
-        max-width: 1440px;
-        margin: auto;
         width: 100%;
-        fill: rgba(121, 156, 212, 0.5);
+
+        padding: 64px 86px 174px;
         display: flex;
         justify-content: center;
+        flex-direction: column;
         align-items: center;
-
-        &:before {
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            content: '';
-            background: no-repeat center/cover url('@public/page_light.png');
-            filter: blur(12px);
-        }
+        background-color: rgba(255, 255, 255, 1);
+        box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15);
         & > .ant-space-item {
-            z-index: 1;
+            width: 100%;
         }
     }
 
-    &__header {
-        .auth-form__img {
+    &__img {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 48px;
+        .ant-image {
             width: 309px;
             height: 76px;
+        }
 
-            margin-bottom: 48px;
-
-            img {
-                width: 100%;
-            }
+        img {
+            width: 100%;
         }
     }
 
-    &__body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        .ant-tabs-tab:nth-child(1) {
-            margin: 0;
-            padding: 12.5px 72.5px;
-            font-size: 16px;
-            font-weight: 400;
-            line-height: 21px;
+    &__tabs {
+        width: 100%;
+        .ant-tabs-nav-list {
+            width: 100%;
         }
 
-        .ant-tabs-tab:nth-child(2) {
+        .ant-tabs-tab {
+            width: 50%;
+            justify-content: center;
             margin: 0;
-            padding: 12.5px 41px;
             font-size: 16px;
             font-weight: 400;
-            line-height: 21px;
         }
 
         .ant-tabs-nav {
-            margin-bottom: 24px;
+            margin-bottom: 0;
         }
 
         .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
@@ -86,42 +81,50 @@
             background: @text_lite;
         }
     }
+
+    &_signup &__container {
+        padding: 64px 85px;
+    }
 }
 
 @media screen and (max-width: 850px) {
-    .auth-form__container {
-        align-items: flex-start;
-    }
     .auth-form {
-        margin-top: 200px;
+        align-items: flex-start;
+
+        &__container {
+            margin-top: 200px;
+        }
+        &_signup &__container {
+            margin-top: 230px;
+        }
     }
 }
 
 @media screen and (max-width: 660px) {
     .auth-form {
-        max-width: 328px;
-        padding: 32px 16px 124px 16px;
-        margin-top: 0;
+        align-items: center;
 
-        &__container {
-            align-items: center;
+        & > .ant-space-item {
+            max-width: 328px;
         }
-        &__header .auth-form__img {
-            width: 203px;
-            height: 50px;
+
+        & &__container {
+            padding: 32px 16px;
+            margin-top: 0;
+        }
+
+        &__img {
             margin-bottom: 32px;
+            .ant-image {
+                width: 203px;
+                height: 50px;
+            }
         }
 
-        .auth-form__body .ant-tabs-tab {
-            font-size: 14px;
-        }
-
-        .auth-form__body .ant-tabs-tab:nth-child(2) {
-            padding: 11px 30px;
-        }
-
-        .auth-form__body .ant-tabs-tab:nth-child(1) {
-            padding: 11px 57px;
+        &__tabs {
+            .ant-tabs-tab {
+                font-size: 14px;
+            }
         }
     }
 }

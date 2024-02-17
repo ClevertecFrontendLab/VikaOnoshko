@@ -3,8 +3,8 @@
 .form {
     width: 100%;
 
-    input.ant-input {
-        padding: 8px 12px;
+    .ant-tabs-nav {
+        margin-bottom: 24px;
     }
 
     .ant-input-affix-wrapper {
@@ -65,7 +65,23 @@
     }
 }
 
+@media screen and (max-width: 850px) {
+    .auth-form__container_signin {
+        align-items: flex-start;
+        .auth-form {
+            margin-top: 200px;
+        }
+    }
+}
+
 @media screen and (max-width: 660px) {
+    .auth-form__container_signin {
+        align-items: center;
+        .auth-form {
+            margin-top: 0;
+        }
+    }
+
     .form__additional .forgot-password {
         letter-spacing: 0.5px;
     }

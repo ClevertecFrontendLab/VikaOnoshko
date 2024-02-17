@@ -4,24 +4,23 @@ import Logo from '@public/logo.png';
 import { Tabs } from 'antd';
 
 interface AuthProps {
+    activeForm: 'signin' | 'signup';
     children: React.ReactNode;
 }
 
 const items = [
-    { label: 'Вход', key: 'item-1' },
-    { label: 'Регистрация', key: 'item-2' },
+    { label: 'Вход', key: 'signin' },
+    { label: 'Регистрация', key: 'signup' },
 ];
 
-export const Auth = ({ children }: AuthProps) => {
+export const Auth = ({ children, activeForm }: AuthProps) => {
     return (
-        <Space className='auth-form__container'>
-            <Space className='auth-form' size={0}>
-                <Space className='auth-form__header'>
-                    <Image className='auth-form__img' src={Logo} preview={false} />
+        <Space className={`auth-form auth-form_${activeForm}`}>
+            <Space className='auth-form__container' size={0} direction='vertical'>
+                <Space className='auth-form__img'>
+                    <Image src={Logo} preview={false} />
                 </Space>
-                <Space className='auth-form__body'>
-                    <Tabs items={items} />
-                </Space>
+                <Tabs className='auth-form__tabs' items={items} activeKey={activeForm} />
                 {children}
             </Space>
         </Space>
