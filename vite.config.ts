@@ -15,6 +15,9 @@ export default defineConfig({
                 math: 'always',
                 relativeUrls: true,
                 javascriptEnabled: true,
+                modifyVars: {
+                    'primary-color': '#2f54eb',
+                },
             },
         },
     },

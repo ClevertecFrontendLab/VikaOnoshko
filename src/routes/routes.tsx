@@ -1,3 +1,4 @@
+import { ErrorLogin } from '@pages/error-login';
 import { MainPage } from '@pages/main-page';
 import { SigninForm } from '@pages/signin-form';
 import { SignupForm } from '@pages/signup-form';
@@ -8,5 +9,6 @@ export const routes = (
         <Route path='/' element={<MainPage />} />
         <Route path='/auth/signin' element={<SigninForm />} />
         <Route path='/auth/signup' element={<SignupForm />} />
+        <Route path='/result/error-login' element={<ErrorLogin />} />
     </Routes>
 );
