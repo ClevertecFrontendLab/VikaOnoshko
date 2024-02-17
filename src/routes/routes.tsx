@@ -7,6 +7,7 @@ import { SignupForm } from '@pages/signup-form';
 import { SuccessRegistration } from '@pages/modal/success-registration';
 import { Route, Routes } from 'react-router-dom';
 import { ErrorEmailNoExist } from '@pages/modal/error-email-no-exist';
+import { ErrorEmail } from '@pages/modal/error-email';
 
 export const routes = (
     <Routes>
@@ -18,5 +19,6 @@ export const routes = (
         <Route path='/result/error-user-exist' element={<ErrorExit />} />
         <Route path='/result/error' element={<ErrorRegistration />} />
         <Route path='/result/error-check-email-no-exist' element={<ErrorEmailNoExist />} />
+        <Route path='/result/error-check-email' element={<ErrorEmail />} />
     </Routes>
 );
