@@ -7,10 +7,17 @@ interface ErrorModalProps {
     title: string;
     text: string;
     children?: React.ReactNode;
-    buttonText: string;
+    buttonText?: string;
 }
 
-export const ErrorModal = ({ img, title, text, buttonText, className }: ErrorModalProps) => {
+export const ErrorModal = ({
+    img,
+    title,
+    text,
+    buttonText,
+    className,
+    children,
+}: ErrorModalProps) => {
     return (
         <Space className={`error-modal ${className}`}>
             <Space className='error-modal__container' size={0}>
@@ -19,9 +26,12 @@ export const ErrorModal = ({ img, title, text, buttonText, className }: ErrorMod
                     {title}
                 </Typography.Title>
                 <Typography.Text className='error-modal__text'>{text}</Typography.Text>
-                <Button className='error-modal__button' type='primary' size='large'>
-                    {buttonText}
-                </Button>
+                {buttonText && (
+                    <Button className='error-modal__button' type='primary' size='large'>
+                        {buttonText}
+                    </Button>
+                )}
+                {children}
             </Space>
         </Space>
     );
