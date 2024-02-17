@@ -1,103 +1,63 @@
 @import '@style/constants.less';
 
-.form {
-    width: 100%;
-
-    .ant-tabs-nav {
-        margin-bottom: 24px;
-    }
-
-    .ant-input-affix-wrapper {
-        padding: 0;
-    }
-
-    .ant-input-suffix {
-        padding: 10px;
-    }
-
-    &__input {
-        width: 100%;
-        margin-bottom: 50px;
-        .ant-form-item {
-            margin-bottom: 0;
+.signin-form {
+    margin-top: 24px;
+    &__email {
+        margin-bottom: 32px;
+        .ant-input-group-addon {
+            padding: 0 15px;
         }
+    }
+
+    &__password {
+        margin-bottom: 50px;
     }
 
     &__additional {
         width: 100%;
-        margin-bottom: 20px;
+        margin-bottom: 24px;
         align-items: center;
         justify-content: space-between;
+        .ant-form-item-control-input {
+            min-height: 24px;
+            height: 24px;
+        }
         .ant-form-item {
             margin-bottom: 0;
         }
-
-        .forgot-password {
-            letter-spacing: 1px;
-        }
-
-        a {
-            color: @text_lite;
-        }
-
-        .ant-checkbox-checked .ant-checkbox-inner {
-            background-color: @text_lite;
-        }
     }
 
-    .ant-form-item-control-input-content {
-        display: flex;
-        justify-content: space-between;
+    &__forgot-password {
+        letter-spacing: 1px;
     }
 
-    &__footer {
-        margin-bottom: 0;
-        .ant-form-item-control-input-content {
-            flex-direction: column;
-
-            .ant-btn:first-child {
-                margin-bottom: 16px;
-            }
-        }
-        .google-auth {
-            letter-spacing: 1px;
-        }
+    .ant-btn {
+        width: 100%;
     }
-}
 
-@media screen and (max-width: 850px) {
-    .auth-form__container_signin {
-        align-items: flex-start;
-        .auth-form {
-            margin-top: 200px;
-        }
+    &__submit {
+        margin-bottom: 16px;
     }
 }
 
 @media screen and (max-width: 660px) {
-    .auth-form__container_signin {
-        align-items: center;
-        .auth-form {
-            margin-top: 0;
-        }
-    }
-
-    .form__additional .forgot-password {
-        letter-spacing: 0.5px;
-    }
-
-    .button_secondary {
-        svg {
-            display: none;
+    .signin-form {
+        &__additional {
+            margin-bottom: 20px;
         }
 
-        .anticon + span {
-            margin-left: 0;
-            letter-spacing: 0;
+        &__forgot-password {
+            letter-spacing: 0.5px;
         }
-    }
 
-    .form__additional {
-        margin-bottom: 16px;
+        &__google-auth {
+            font-size: 14px;
+            span {
+                margin-left: 0 !important;
+            }
+            .anticon {
+                display: none;
+            }
+        }
     }
 }
