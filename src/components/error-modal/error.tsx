@@ -10,9 +10,9 @@ interface ErrorModalProps {
     buttonText: string;
 }
 
-export const ErrorModal = ({ img, title, text, buttonText }: ErrorModalProps) => {
+export const ErrorModal = ({ img, title, text, buttonText, className }: ErrorModalProps) => {
     return (
-        <Space className='error-modal'>
+        <Space className={`error-modal ${className}`}>
             <Space className='error-modal__container' size={0}>
                 <Image src={img} preview={false} className='error-modal__img' />
                 <Typography.Title level={3} className='error-modal__title'>

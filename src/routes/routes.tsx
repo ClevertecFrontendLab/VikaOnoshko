@@ -1,11 +1,12 @@
-import { ErrorExit } from '@pages/error-exit';
-import { ErrorLogin } from '@pages/error-login';
-import { ErrorRegistration } from '@pages/error-registration';
+import { ErrorExit } from '@pages/modal/error-exit';
+import { ErrorLogin } from '@pages/modal/error-login';
+import { ErrorRegistration } from '@pages/modal/error-registration';
 import { MainPage } from '@pages/main-page';
 import { SigninForm } from '@pages/signin-form';
 import { SignupForm } from '@pages/signup-form';
-import { SuccessRegistration } from '@pages/success-registration';
+import { SuccessRegistration } from '@pages/modal/success-registration';
 import { Route, Routes } from 'react-router-dom';
+import { ErrorEmailNoExist } from '@pages/modal/error-email-no-exist';
 
 export const routes = (
     <Routes>
@@ -16,5 +17,6 @@ export const routes = (
         <Route path='/result/success' element={<SuccessRegistration />} />
         <Route path='/result/error-user-exist' element={<ErrorExit />} />
         <Route path='/result/error' element={<ErrorRegistration />} />
+        <Route path='/result/error-check-email-no-exist' element={<ErrorEmailNoExist />} />
     </Routes>
 );
