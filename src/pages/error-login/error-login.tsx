@@ -1,9 +1,9 @@
-import { Error } from '@components/error';
+import { ErrorModal } from '@components/error-modal';
 import Yelloy from '@public/yelloy.png';
 
 export const ErrorLogin: React.FC = () => {
     return (
-        <Error
+        <ErrorModal
             title='Вход не выполнен'
             text='Что-то пошло не так. Попробуйте еще раз'
             img={Yelloy}
