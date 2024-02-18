@@ -4,8 +4,8 @@ import './error.less';
 interface ErrorModalProps {
     className?: string;
     img?: React.ReactNode;
-    title: string;
-    text: string;
+    title: React.ReactNode;
+    text: React.ReactNode;
     children?: React.ReactNode;
     buttonText?: string;
 }

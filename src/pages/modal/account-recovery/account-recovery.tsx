@@ -8,19 +8,32 @@ export const AccountRecovery: React.FC = () => {
     return (
         <ErrorModal
             className='error-modal_account-recovery'
-            title='Введите код для восстановления аккауанта'
-            text='Мы отправили вам на e-mail victorbyden@gmail.com шестизначный код. Введите его в поле ниже.'
+            title={
+                <>
+                    Введите код <br />
+                    для восстановления аккауанта
+                </>
+            }
+            text={
+                <>
+                    Мы отправили вам на e-mail <b>victorbyden@gmail.com</b> шестизначный код.
+                    Введите его в поле ниже.
+                </>
+            }
             img={attention}
         >
             <VerificationInput
                 placeholder={''}
-                autoFocus={false}
+                autoFocus={true}
                 classNames={{
                     character: 'character',
                     characterSelected: 'character--selected',
+                    container: 'container',
                 }}
             />
-            <Typography.Text>Не пришло письмо? Проверьте папку Спам.</Typography.Text>
+            <Typography.Text className='error-modal_account-recovery__text'>
+                Не пришло письмо? Проверьте папку Спам.
+            </Typography.Text>
         </ErrorModal>
     );
 };
