@@ -1,14 +1,14 @@
-import { ErrorExit } from '@pages/modal/error-exit';
+import { ErrorExit } from '@pages/modal/registration/error-exit';
 import { ErrorLogin } from '@pages/modal/error-login';
-import { ErrorRegistration } from '@pages/modal/error-registration';
+import { ErrorRegistration } from '@pages/modal/registration/error-registration';
 import { MainPage } from '@pages/main-page';
 import { SigninForm } from '@pages/signin-form';
 import { SignupForm } from '@pages/signup-form';
-import { SuccessRegistration } from '@pages/modal/success-registration';
+import { SuccessRegistration } from '@pages/modal/registration/success-registration';
 import { Route, Routes } from 'react-router-dom';
-import { ErrorEmailNoExist } from '@pages/modal/error-email-no-exist';
-import { ErrorEmail } from '@pages/modal/error-email';
-import { AccountRecovery } from '@pages/modal/account-recovery';
+import { ErrorEmailNoExist } from '@pages/modal/password-recovery/error-email-no-exist';
+import { ErrorEmail } from '@pages/modal/password-recovery/error-email';
+import { AccountRecovery } from '@pages/modal/password-recovery/account-recovery';
 
 export const routes = (
     <Routes>
@@ -22,5 +22,8 @@ export const routes = (
         <Route path='/result/error-check-email-no-exist' element={<ErrorEmailNoExist />} />
         <Route path='/result/error-check-email' element={<ErrorEmail />} />
         <Route path='/auth/confirm-email' element={<AccountRecovery />} />
+        <Route path='/auth/change-password' element={<></>} />
+        <Route path='/result/error-change-password' element={<></>} />
+        <Route path='/result/success-change-password' element={<></>} />
     </Routes>
 );
