@@ -9,6 +9,7 @@ import { Route, Routes } from 'react-router-dom';
 import { ErrorEmailNoExist } from '@pages/modal/password-recovery/error-email-no-exist';
 import { ErrorEmail } from '@pages/modal/password-recovery/error-email';
 import { AccountRecovery } from '@pages/modal/password-recovery/account-recovery';
+import { ErrorChangePassword } from '@pages/modal/password-recovery/error-change-password';
 
 export const routes = (
     <Routes>
@@ -23,7 +24,7 @@ export const routes = (
         <Route path='/result/error-check-email' element={<ErrorEmail />} />
         <Route path='/auth/confirm-email' element={<AccountRecovery />} />
         <Route path='/auth/change-password' element={<></>} />
-        <Route path='/result/error-change-password' element={<></>} />
+        <Route path='/result/error-change-password' element={<ErrorChangePassword />} />
         <Route path='/result/success-change-password' element={<></>} />
     </Routes>
 );
