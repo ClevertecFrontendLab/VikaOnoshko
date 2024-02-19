@@ -27,6 +27,7 @@ export default defineConfig({
             '@components': path.resolve(__dirname, 'src/components'),
             '@constants': path.resolve(__dirname, 'src/constants'),
             '@hooks': path.resolve(__dirname, 'src/hooks'),
+            '@lotties': path.resolve(__dirname, 'src/lotties'),
             '@pages': path.resolve(__dirname, 'src/pages'),
             '@redux': path.resolve(__dirname, 'src/redux'),
             '@routes': path.resolve(__dirname, 'src/routes'),

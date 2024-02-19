@@ -21,6 +21,7 @@
             "@public/*": ["./public/*"],
             "@components/*": ["./src/components/*"],
             "@constants/*": ["./src/constants/*"],
+            "@lotties/*": ["./src/lotties/*"],
             "@hooks/*": ["./src/hooks/*"],
             "@pages/*": ["./src/pages/*"],
             "@redux/*": ["./src/redux/*"],
