@@ -10,6 +10,7 @@ import { ErrorEmailNoExist } from '@pages/modal/password-recovery/error-email-no
 import { ErrorEmail } from '@pages/modal/password-recovery/error-email';
 import { AccountRecovery } from '@pages/modal/password-recovery/account-recovery';
 import { ErrorChangePassword } from '@pages/modal/password-recovery/error-change-password';
+import { SuccesesChangePassword } from '@pages/modal/password-recovery/succeses-change-password/succeses-change-password';
 
 export const routes = (
     <Routes>
@@ -25,6 +26,6 @@ export const routes = (
         <Route path='/auth/confirm-email' element={<AccountRecovery />} />
         <Route path='/auth/change-password' element={<></>} />
         <Route path='/result/error-change-password' element={<ErrorChangePassword />} />
-        <Route path='/result/success-change-password' element={<></>} />
+        <Route path='/result/success-change-password' element={<SuccesesChangePassword />} />
     </Routes>
 );
