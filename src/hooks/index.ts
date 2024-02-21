@@ -1,1 +1,1 @@
-export { useAppDispatch, useAppSelector } from './typed-react-redux-hooks';
+export * from './typed-react-redux-hooks';

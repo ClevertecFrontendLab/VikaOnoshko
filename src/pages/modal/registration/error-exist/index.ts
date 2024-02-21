@@ -1,1 +1,1 @@
-export { ErrorExist } from './error-exist';
+export * from './error-exist';

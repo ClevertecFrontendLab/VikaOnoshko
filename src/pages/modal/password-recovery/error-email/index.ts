@@ -1,1 +1,1 @@
-export { ErrorEmail } from './error-email';
+export * from './error-email';

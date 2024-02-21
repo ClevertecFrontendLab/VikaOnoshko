@@ -1,1 +1,1 @@
-export { IncorrectCode } from './incorrect-code';
+export * from './incorrect-code';

@@ -22,7 +22,7 @@
             "@components/*": ["./src/components/*"],
             "@constants/*": ["./src/constants/*"],
             "@lotties/*": ["./src/lotties/*"],
-            "@common*":["./src/common/*"],
+          "@common/*":["./src/common/*"],
             "@hooks/*": ["./src/hooks/*"],
             "@pages/*": ["./src/pages/*"],
             "@redux/*": ["./src/redux/*"],

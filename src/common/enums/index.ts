@@ -1,1 +1,1 @@
-export { Path } from './path.enum.ts';
+export * from './path.enum.ts';

@@ -1,1 +1,1 @@
-export { ErrorRegistration } from './error-registration';
+export * from './error-registration';

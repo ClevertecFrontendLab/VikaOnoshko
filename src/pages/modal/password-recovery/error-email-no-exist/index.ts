@@ -1,1 +1,1 @@
-export { ErrorEmailNoExist } from './error-email-no-exist';
+export * from './error-email-no-exist';

@@ -12,7 +12,7 @@ import { AccountRecovery } from '@pages/modal/password-recovery/account-recovery
 import { ErrorChangePassword } from '@pages/modal/password-recovery/error-change-password';
 import { SuccesesChangePassword } from '@pages/modal/password-recovery/succeses-change-password/succeses-change-password';
 import { ChangePassword } from '@pages/modal/password-recovery/change-password/change-password';
-import { Path } from '@commonenums';
+import { Path } from '@common/enums';
 
 export const routes = (
     <Routes>
