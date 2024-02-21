@@ -21,7 +21,7 @@ export const ErrorModal = ({
     return (
         <Space className={`error-modal ${className}`}>
             <Space className='error-modal__container' size={0}>
-                {img && <Image src={img} preview={false} className='error-modal__img' />}
+                {img && <Image src={img as string} preview={false} className='error-modal__img' />}
                 <Typography.Title level={3} className='error-modal__title'>
                     {title}
                 </Typography.Title>

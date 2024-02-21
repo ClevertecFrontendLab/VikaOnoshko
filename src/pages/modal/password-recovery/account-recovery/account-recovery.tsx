@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { IncorrectCode } from '../incorrect-code';
 
 export const AccountRecovery: React.FC = () => {
-    const [modal, setModal] = useState(true);
+    const [modal] = useState(true);
 
     return (
         <>

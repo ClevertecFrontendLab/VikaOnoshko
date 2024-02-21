@@ -1,7 +1,7 @@
 import { ErrorModal } from '@components/error-modal';
 import error from '@public/error.png';
 
-export const ErrorExit: React.FC = () => {
+export const ErrorExist: React.FC = () => {
     return (
         <ErrorModal
             title='Данные не сохранились'

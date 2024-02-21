@@ -1,4 +1,4 @@
-import { ErrorExit } from '@pages/modal/registration/error-exit';
+import { ErrorExist } from '@pages/modal/registration/error-exist';
 import { ErrorLogin } from '@pages/modal/error-login';
 import { ErrorRegistration } from '@pages/modal/registration/error-registration';
 import { MainPage } from '@pages/main-page';
@@ -12,21 +12,22 @@ import { AccountRecovery } from '@pages/modal/password-recovery/account-recovery
 import { ErrorChangePassword } from '@pages/modal/password-recovery/error-change-password';
 import { SuccesesChangePassword } from '@pages/modal/password-recovery/succeses-change-password/succeses-change-password';
 import { ChangePassword } from '@pages/modal/password-recovery/change-password/change-password';
+import { Path } from '@commonenums';
 
 export const routes = (
     <Routes>
-        <Route path='/' element={<MainPage />} />
-        <Route path='/auth/signin' element={<SigninForm />} />
-        <Route path='/auth/signup' element={<SignupForm />} />
-        <Route path='/result/error-login' element={<ErrorLogin />} />
-        <Route path='/result/success' element={<SuccessRegistration />} />
-        <Route path='/result/error-user-exist' element={<ErrorExit />} />
-        <Route path='/result/error' element={<ErrorRegistration />} />
-        <Route path='/result/error-check-email-no-exist' element={<ErrorEmailNoExist />} />
-        <Route path='/result/error-check-email' element={<ErrorEmail />} />
-        <Route path='/auth/confirm-email' element={<AccountRecovery />} />
-        <Route path='/auth/change-password' element={<ChangePassword />} />
-        <Route path='/result/error-change-password' element={<ErrorChangePassword />} />
-        <Route path='/result/success-change-password' element={<SuccesesChangePassword />} />
+        <Route path={Path.HOME} element={<MainPage />} />
+        <Route path={Path.SIGN_IN} element={<SigninForm />} />
+        <Route path={Path.SIGN_UP} element={<SignupForm />} />
+        <Route path={Path.ERROR_LOGIN} element={<ErrorLogin />} />
+        <Route path={Path.RESULT_SUCCESS} element={<SuccessRegistration />} />
+        <Route path={Path.USER_EXIST} element={<ErrorExist />} />
+        <Route path={Path.ERROR} element={<ErrorRegistration />} />
+        <Route path={Path.ERROR_CHECK_EMAIL_NO_EXIST} element={<ErrorEmailNoExist />} />
+        <Route path={Path.ERROR_CHECK_EMAIL} element={<ErrorEmail />} />
+        <Route path={Path.CONFIRM_EMAIL} element={<AccountRecovery />} />
+        <Route path={Path.CHANGE_PASSWORD} element={<ChangePassword />} />
+        <Route path={Path.ERROR_CHANGE_PASSWORD} element={<ErrorChangePassword />} />
+        <Route path={Path.SUCESS_CHANGE_PASSWORD} element={<SuccesesChangePassword />} />
     </Routes>
 );

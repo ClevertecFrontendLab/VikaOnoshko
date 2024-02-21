@@ -1,32 +1,35 @@
 import { Button, Checkbox, Form, Input, Space, Typography } from 'antd';
 import { Auth } from '../../components/auth';
-import './signin-form.less';
 import { GooglePlusOutlined } from '@ant-design/icons';
+import { useCallback, useState } from 'react';
+
+import './signin-form.less';
 
 export const SigninForm: React.FC = () => {
-    const onFinish = (values: any) => {
-        console.log('Success:', values);
-    };
+    const [hasErrors, setHasErrors] = useState(false);
+    const [form] = Form.useForm();
+    const { getFieldsError } = form;
 
-    const onFinishFailed = (errorInfo: any) => {
-        console.log('Failed:', errorInfo);
-    };
+    const onFieldsChange = useCallback(() => {
+        const errors = getFieldsError();
+        const hasErrorsOnField = errors.some((item) => item.errors.length > 0);
+        setHasErrors(hasErrorsOnField);
+    }, []);
 
     return (
         <Auth activeForm='signin'>
             <Form
+                form={form}
                 className='signin-form'
-                name='basic'
-                initialValues={{ remember: true }}
-                onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
                 autoComplete='off'
                 size='large'
+                fields={[{ name: 'email' }, { name: 'password' }, { name: 'remember' }]}
+                onFieldsChange={onFieldsChange}
             >
                 <Form.Item
                     className='signin-form__email'
                     name='email'
-                    rules={[{ required: true, message: 'Please input your email!' }]}
+                    rules={[{ type: 'email', required: true, message: '' }]}
                 >
                     <Input addonBefore={'e-mail:'} />
                 </Form.Item>
@@ -34,7 +37,14 @@ export const SigninForm: React.FC = () => {
                 <Form.Item
                     className='signin-form__password'
                     name='password'
-                    rules={[{ required: true, message: 'Please input your password!' }]}
+                    rules={[
+                        { required: true, message: '' },
+                        {
+                            type: 'regexp',
+                            pattern: /^(?=.*[A-Z])(?=.*[0-9])[a-zA-Z]{8,}$/,
+                            message: 'Пароль не менее 8 символов,c заглавной буквой и цифрой',
+                        },
+                    ]}
                 >
                     <Input.Password placeholder='Пароль' />
                 </Form.Item>
@@ -53,7 +63,13 @@ export const SigninForm: React.FC = () => {
                     </Typography.Link>
                 </Space>
 
-                <Button type='primary' role='submit' className='signin-form__submit'>
+                <Button
+                    type='primary'
+                    role='submit'
+                    htmlType='submit'
+                    className='signin-form__submit'
+                    disabled={hasErrors}
+                >
                     Войти
                 </Button>
 
