@@ -42,8 +42,18 @@ export const SignupForm: React.FC = () => {
 
                 <Form.Item
                     className='signup-form__repeat-password'
-                    name='password'
-                    rules={[{ required: true, message: 'Please input your password!' }]}
+                    name='repeatPassword'
+                    rules={[
+                        { required: true, message: 'Please input your password!' },
+                        ({ getFieldValue }) => ({
+                            validator(_, value) {
+                                if (!value || getFieldValue('password') === value) {
+                                    return Promise.resolve();
+                                }
+                                return Promise.reject(new Error('Пароли не совпадают'));
+                            },
+                        }),
+                    ]}
                 >
                     <Input.Password placeholder='Повторите пароль' />
                 </Form.Item>

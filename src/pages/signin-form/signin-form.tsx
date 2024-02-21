@@ -4,6 +4,7 @@ import { GooglePlusOutlined } from '@ant-design/icons';
 import { useCallback, useState } from 'react';
 
 import './signin-form.less';
+import { PASSWORD_PATTERN } from '@common/constants';
 
 export const SigninForm: React.FC = () => {
     const [hasErrors, setHasErrors] = useState(false);
@@ -40,8 +41,7 @@ export const SigninForm: React.FC = () => {
                     rules={[
                         { required: true, message: '' },
                         {
-                            type: 'regexp',
-                            pattern: /^(?=.*[A-Z])(?=.*[0-9])[a-zA-Z]{8,}$/,
+                            pattern: PASSWORD_PATTERN,
                             message: 'Пароль не менее 8 символов,c заглавной буквой и цифрой',
                         },
                     ]}
