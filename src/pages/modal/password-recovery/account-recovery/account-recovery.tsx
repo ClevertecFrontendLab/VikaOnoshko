@@ -54,6 +54,7 @@ export const AccountRecovery: React.FC = () => {
         >
             <VerificationInput
                 placeholder={''}
+                data-test-id='verification-input'
                 autoFocus={true}
                 onComplete={onComplete}
                 classNames={{

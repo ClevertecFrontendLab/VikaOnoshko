@@ -53,6 +53,7 @@ export const SignupForm: React.FC = () => {
             >
                 <Form.Item
                     className='signup-form__email'
+                    data-test-id='registration-email'
                     name='email'
                     rules={[{ type: 'email', required: true, message: '' }]}
                 >
@@ -61,6 +62,7 @@ export const SignupForm: React.FC = () => {
 
                 <Form.Item
                     className='signup-form__password'
+                    data-test-id='registration-password'
                     name='password'
                     rules={[
                         { required: true, message: '' },
@@ -75,6 +77,7 @@ export const SignupForm: React.FC = () => {
 
                 <Form.Item
                     className='signup-form__repeat-password'
+                    data-test-id='registration-confirm-password'
                     name='repeatPassword'
                     rules={[
                         { required: true, message: '' },
@@ -97,6 +100,7 @@ export const SignupForm: React.FC = () => {
 
                 <Button
                     className='signup-form__submit'
+                    data-test-id='registration-submit-button'
                     type='primary'
                     disabled={hasErrors}
                     htmlType='submit'

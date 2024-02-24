@@ -12,6 +12,7 @@ export const ErrorRegistration: React.FC = () => {
             img={error}
             buttonText='Повторить'
             onSubmit={goToSignUp}
+            data-test-id='registration-retry-button'
         />
     );
 };

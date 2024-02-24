@@ -6,6 +6,7 @@ export const SuccesesChangePassword: React.FC = () => {
     return (
         <ErrorModal
             className='error-modal_success-change-password'
+            data-test-id='change-entry-button'
             title='Пароль успешно изменен'
             text='Теперь можно войти в аккаунт, используя свой логин и новый пароль'
             img={succses}

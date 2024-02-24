@@ -12,6 +12,7 @@ export const ErrorLogin: React.FC = () => {
             img={Yelloy}
             buttonText='Повторить'
             onSubmit={goToSignIn}
+            data-test-id='login-retry-button'
         />
     );
 };

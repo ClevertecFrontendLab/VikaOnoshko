@@ -14,6 +14,7 @@ export const ErrorEmailNoExist: React.FC = () => {
             img={error}
             buttonText='Попробовать снова'
             onSubmit={goToSignIn}
+            data-test-id='check-retry-button'
         />
     );
 };

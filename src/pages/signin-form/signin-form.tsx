@@ -83,6 +83,7 @@ export const SigninForm: React.FC = () => {
             >
                 <Form.Item
                     className='signin-form__email'
+                    data-test-id='login-email'
                     name='email'
                     rules={[{ type: 'email', required: true, message: '' }]}
                 >
@@ -91,6 +92,7 @@ export const SigninForm: React.FC = () => {
 
                 <Form.Item
                     className='signin-form__password'
+                    data-test-id='login-password'
                     name='password'
                     rules={[
                         { required: true, message: '' },
@@ -109,13 +111,14 @@ export const SigninForm: React.FC = () => {
                         name='remember'
                         valuePropName='checked'
                     >
-                        <Checkbox>Запомнить меня</Checkbox>
+                        <Checkbox data-test-id='login-remember'>Запомнить меня</Checkbox>
                     </Form.Item>
                     <Button
                         onClick={oncheckEmail}
                         className='signin-form__forgot-password'
                         type='link'
                         disabled={!canForgotPassword}
+                        data-test-id='login-forgot-button'
                     >
                         Забыли пароль?
                     </Button>
@@ -127,6 +130,7 @@ export const SigninForm: React.FC = () => {
                     htmlType='submit'
                     className='signin-form__submit'
                     disabled={hasErrors}
+                    data-test-id='login-submit-button'
                 >
                     Войти
                 </Button>

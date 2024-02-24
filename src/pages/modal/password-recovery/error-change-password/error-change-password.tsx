@@ -14,6 +14,7 @@ export const ErrorChangePassword: React.FC = () => {
             text='Что-то пошло не так. Попробуйте еще раз'
             img={error}
             buttonText='Повторить'
+            data-test-id='change-retry-button'
         />
     );
 };

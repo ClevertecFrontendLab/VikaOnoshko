@@ -14,6 +14,7 @@ export const SuccessRegistration: React.FC = () => {
             img={succes}
             buttonText='Войти'
             onSubmit={goToSignIn}
+            data-test-id='registration-enter-button'
         />
     );
 };

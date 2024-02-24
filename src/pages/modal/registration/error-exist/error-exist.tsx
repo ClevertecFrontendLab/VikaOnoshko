@@ -12,6 +12,7 @@ export const ErrorExist: React.FC = () => {
             img={error}
             buttonText='Назад к регистрации'
             onSubmit={goToSignUp}
+            data-test-id='registration-back-button'
         />
     );
 };

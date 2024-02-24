@@ -42,6 +42,7 @@ export const ChangePassword: React.FC = () => {
                     className='change-password__password'
                     extra='Пароль не менее 8 символов, с заглавной буквой и цифрой'
                     name='password'
+                    data-test-id='change-password'
                     rules={[{ required: true, pattern: PASSWORD_PATTERN, message: '' }]}
                 >
                     <Input.Password placeholder='Новый пароль' />
@@ -49,6 +50,7 @@ export const ChangePassword: React.FC = () => {
 
                 <Form.Item
                     name='confirmPassword'
+                    data-test-id='change-confirm-password'
                     rules={[
                         { required: true, pattern: PASSWORD_PATTERN, message: '' },
                         ({ getFieldValue }) => ({
@@ -64,7 +66,12 @@ export const ChangePassword: React.FC = () => {
                     <Input.Password placeholder='Повторите пароль' />
                 </Form.Item>
 
-                <Button className='change-password__button' type='primary' htmlType='submit'>
+                <Button
+                    className='change-password__button'
+                    type='primary'
+                    htmlType='submit'
+                    data-test-id='change-submit-button'
+                >
                     Сохранить
                 </Button>
             </Form>
