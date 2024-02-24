@@ -30,7 +30,8 @@
             "@style/*": ["./src/style/*"],
             "@types/*": ["./src/types/*"],
             "@utils/*": ["./src/utils/*"],
-            "@ui/*": ["./src/ui/*"]
+            "@ui/*": ["./src/ui/*"],
+            "@api/*": ["./src/api/*"],
         },
         "plugins": [
             {

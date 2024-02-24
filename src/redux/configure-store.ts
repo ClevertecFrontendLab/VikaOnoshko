@@ -1,6 +1,6 @@
-import { applyMiddleware, combineReducers, createStore } from '@reduxjs/toolkit';
+import { authApi } from '@api/auth.api';
+import { configureStore } from '@reduxjs/toolkit';
 import { createBrowserHistory } from 'history';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import { createReduxHistoryContext } from 'redux-first-history';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
@@ -8,12 +8,12 @@ const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHisto
     //other options if needed
 });
 
-export const store = createStore(
-    combineReducers({
-        router: routerReducer,
-    }),
-    composeWithDevTools(applyMiddleware(routerMiddleware)),
-);
+export const store = configureStore({
+    reducer: { router: routerReducer, [authApi.reducerPath]: authApi.reducer },
+    devTools: true,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(routerMiddleware, authApi.middleware),
+});
 
 export const history = createReduxHistory(store);
 

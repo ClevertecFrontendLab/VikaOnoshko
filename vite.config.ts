@@ -36,6 +36,7 @@ export default defineConfig({
             '@utils': path.resolve(__dirname, 'src/utils'),
             '@ui': path.resolve(__dirname, 'src/ui'),
             '@common': path.resolve(__dirname, 'src/common'),
+            '@api': path.resolve(__dirname, 'src/api'),
         },
     },
 });

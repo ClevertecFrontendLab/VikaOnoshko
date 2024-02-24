@@ -3,39 +3,72 @@ import { Auth } from '@components/auth';
 import { GooglePlusOutlined } from '@ant-design/icons';
 import './signup-form.less';
 
-export const SignupForm: React.FC = () => {
-    const onFinish = (values: any) => {
-        console.log('Success:', values);
-    };
+import { PASSWORD_PATTERN } from '@common/constants';
+import { useCallback, useState } from 'react';
+import { authApi } from '@api/auth.api';
+import { ApiError, RegistrationBody } from '@common/types';
+import { useAppNavigate } from '@hooks/navigate';
 
-    const onFinishFailed = (errorInfo: any) => {
-        console.log('Failed:', errorInfo);
-    };
+export const SignupForm: React.FC = () => {
+    const [hasErrors, setHasErrors] = useState(false);
+
+    const [form] = Form.useForm();
+    const { getFieldsError } = form;
+
+    const { goToResultSuccess, goToError, goToUserExist } = useAppNavigate();
+
+    const onFieldsChange = useCallback(() => {
+        const errors = getFieldsError();
+        const hasErrorsOnField = errors.some((item) => item.errors.length > 0);
+        setHasErrors(hasErrorsOnField);
+    }, []);
+
+    const [registration] = authApi.useRegistrationMutation();
+
+    const onFinish = useCallback(() => {
+        const body: RegistrationBody = {
+            email: form.getFieldValue('email'),
+            password: form.getFieldValue('password'),
+        };
+        registration(body).then((responce) => {
+            if ('data' in responce) {
+                goToResultSuccess();
+            } else if ((responce.error as ApiError).data.statusCode === 409) {
+                goToUserExist();
+            } else {
+                goToError();
+            }
+        });
+    }, []);
 
     return (
         <Auth activeForm='signup'>
             <Form
+                form={form}
                 className='signup-form'
-                name='basic'
-                initialValues={{ remember: true }}
-                onFinish={onFinish}
-                onFinishFailed={onFinishFailed}
-                autoComplete='off'
+                fields={[{ name: 'email' }, { name: 'password' }, { name: 'repeatPassword' }]}
                 size='large'
+                onFieldsChange={onFieldsChange}
+                onFinish={onFinish}
             >
                 <Form.Item
                     className='signup-form__email'
                     name='email'
-                    rules={[{ required: true, message: 'Please input your email!' }]}
+                    rules={[{ type: 'email', required: true, message: '' }]}
                 >
                     <Input addonBefore={'e-mail:'} />
                 </Form.Item>
 
                 <Form.Item
                     className='signup-form__password'
-                    extra='Пароль не менее 8 символов, с заглавной буквой и цифрой'
                     name='password'
-                    rules={[{ required: true, message: 'Please input your password!' }]}
+                    rules={[
+                        { required: true, message: '' },
+                        {
+                            pattern: PASSWORD_PATTERN,
+                            message: 'Пароль не менее 8 символов,c заглавной буквой и цифрой',
+                        },
+                    ]}
                 >
                     <Input.Password placeholder='Пароль' />
                 </Form.Item>
@@ -44,7 +77,11 @@ export const SignupForm: React.FC = () => {
                     className='signup-form__repeat-password'
                     name='repeatPassword'
                     rules={[
-                        { required: true, message: 'Please input your password!' },
+                        { required: true, message: '' },
+                        {
+                            pattern: PASSWORD_PATTERN,
+                            message: '',
+                        },
                         ({ getFieldValue }) => ({
                             validator(_, value) {
                                 if (!value || getFieldValue('password') === value) {
@@ -58,7 +95,12 @@ export const SignupForm: React.FC = () => {
                     <Input.Password placeholder='Повторите пароль' />
                 </Form.Item>
 
-                <Button className='signup-form__submit' type='primary'>
+                <Button
+                    className='signup-form__submit'
+                    type='primary'
+                    disabled={hasErrors}
+                    htmlType='submit'
+                >
                     Войти
                 </Button>
 

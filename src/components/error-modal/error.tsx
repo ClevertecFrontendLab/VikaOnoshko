@@ -8,6 +8,7 @@ interface ErrorModalProps {
     text?: React.ReactNode;
     children?: React.ReactNode;
     buttonText?: string;
+    onSubmit?: () => void;
 }
 
 export const ErrorModal = ({
@@ -17,6 +18,7 @@ export const ErrorModal = ({
     buttonText,
     className,
     children,
+    onSubmit,
 }: ErrorModalProps) => {
     return (
         <Space className={`error-modal ${className}`}>
@@ -27,7 +29,12 @@ export const ErrorModal = ({
                 </Typography.Title>
                 {text && <Typography.Text className='error-modal__text'>{text}</Typography.Text>}
                 {buttonText && (
-                    <Button className='error-modal__button' type='primary' size='large'>
+                    <Button
+                        className='error-modal__button'
+                        type='primary'
+                        size='large'
+                        onClick={onSubmit}
+                    >
                         {buttonText}
                     </Button>
                 )}
