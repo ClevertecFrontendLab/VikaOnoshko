@@ -32,3 +32,12 @@ export type ConfirmEmailResponse = {
     email: string;
     message: string;
 };
+
+export type ChangePasswordBody = {
+    password: string;
+    confirmPassword: string;
+};
+
+export type ChangePasswordResponse = {
+    message: string;
+};

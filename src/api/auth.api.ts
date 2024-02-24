@@ -1,4 +1,6 @@
 import {
+    ChangePasswordBody,
+    ChangePasswordResponse,
     CheckEmailBody,
     CheckEmailResponse,
     ConfirmEmailBody,
@@ -27,7 +29,21 @@ export const authApi = createApi({
         }),
 
         confirmEmail: builder.mutation<ConfirmEmailResponse, ConfirmEmailBody>({
-            query: (body) => ({ method: 'POST', url: 'auth/confirm-email', body }),
+            query: (body) => ({
+                method: 'POST',
+                url: 'auth/confirm-email',
+                body,
+                credentials: 'include',
+            }),
+        }),
+
+        changePassword: builder.mutation<ChangePasswordResponse, ChangePasswordBody>({
+            query: (body) => ({
+                method: 'POST',
+                url: 'auth/change-password',
+                body,
+                credentials: 'include',
+            }),
         }),
     }),
 });
