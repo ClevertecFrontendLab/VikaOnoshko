@@ -41,6 +41,7 @@ export const SigninForm: React.FC = () => {
             email: form.getFieldValue('email'),
             password: form.getFieldValue('password'),
         };
+
         login(body).then((responce) => {
             if ('data' in responce) {
                 goToHome();
