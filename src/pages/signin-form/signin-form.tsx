@@ -1,20 +1,73 @@
-import { Button, Checkbox, Form, Input, Space, Typography } from 'antd';
+import { Button, Checkbox, Form, Input, Space } from 'antd';
 import { Auth } from '../../components/auth';
 import { GooglePlusOutlined } from '@ant-design/icons';
 import { useCallback, useState } from 'react';
 
 import './signin-form.less';
 import { PASSWORD_PATTERN } from '@common/constants';
+import { authApi } from '@api/auth.api';
+import { ApiError, CheckEmailBody, LoginBody } from '@common/types';
+import { useAppNavigate } from '@hooks/navigate';
 
 export const SigninForm: React.FC = () => {
     const [hasErrors, setHasErrors] = useState(false);
+    const [canForgotPassword, setCanForgotPassword] = useState(false);
     const [form] = Form.useForm();
-    const { getFieldsError } = form;
+    const { getFieldsError, getFieldValue, getFieldError } = form;
+
+    const {
+        goToHome,
+        goToErrorLogin,
+        goToErrorCheckEmailNoExist,
+        goToErrorCheckEmail,
+        goToConfirmEmail,
+    } = useAppNavigate();
 
     const onFieldsChange = useCallback(() => {
         const errors = getFieldsError();
         const hasErrorsOnField = errors.some((item) => item.errors.length > 0);
         setHasErrors(hasErrorsOnField);
+
+        const emailValue = getFieldValue('email');
+        const emailError = getFieldError('email');
+
+        setCanForgotPassword(!!emailValue && !emailError.length);
+    }, []);
+
+    const [login] = authApi.useLoginMutation();
+
+    const onFinish = useCallback(() => {
+        const body: LoginBody = {
+            email: form.getFieldValue('email'),
+            password: form.getFieldValue('password'),
+        };
+        login(body).then((responce) => {
+            if ('data' in responce) {
+                goToHome();
+            } else {
+                goToErrorLogin();
+            }
+        });
+    }, []);
+
+    const [checkEmail] = authApi.useCheckEmailMutation();
+
+    const oncheckEmail = useCallback(() => {
+        const body: CheckEmailBody = {
+            email: form.getFieldValue('email'),
+        };
+        checkEmail(body).then((responce) => {
+            if ('data' in responce) {
+                goToConfirmEmail(body.email);
+            } else if (
+                (responce.error as ApiError).data?.statusCode === 404 &&
+                (responce.error as ApiError).data?.message === 'Email не найден'
+            ) {
+                goToErrorCheckEmailNoExist();
+            } else {
+                goToErrorCheckEmail();
+            }
+        });
     }, []);
 
     return (
@@ -26,6 +79,7 @@ export const SigninForm: React.FC = () => {
                 size='large'
                 fields={[{ name: 'email' }, { name: 'password' }, { name: 'remember' }]}
                 onFieldsChange={onFieldsChange}
+                onFinish={onFinish}
             >
                 <Form.Item
                     className='signin-form__email'
@@ -57,10 +111,14 @@ export const SigninForm: React.FC = () => {
                     >
                         <Checkbox>Запомнить меня</Checkbox>
                     </Form.Item>
-
-                    <Typography.Link className='signin-form__forgot-password'>
+                    <Button
+                        onClick={oncheckEmail}
+                        className='signin-form__forgot-password'
+                        type='link'
+                        disabled={!canForgotPassword}
+                    >
                         Забыли пароль?
-                    </Typography.Link>
+                    </Button>
                 </Space>
 
                 <Button

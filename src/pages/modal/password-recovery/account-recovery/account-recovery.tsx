@@ -1,51 +1,70 @@
 import { ErrorModal } from '@components/error-modal';
 import './account-recovery.less';
 import attention from '@public/attention.png';
+import error from '@public/error.png';
 import { Typography } from 'antd';
 import VerificationInput from 'react-verification-input';
-import { useState } from 'react';
-import { IncorrectCode } from '../incorrect-code';
+import { useCallback, useState } from 'react';
+import { authApi } from '@api/auth.api';
+import { ConfirmEmailBody } from '@common/types';
+import { useAppNavigate } from '@hooks/navigate';
+import { useLocation } from 'react-router-dom';
 
 export const AccountRecovery: React.FC = () => {
-    const [modal] = useState(true);
+    const [modal, setModal] = useState(true);
+    const { goToConfirmPassword } = useAppNavigate();
+    const state: Pick<ConfirmEmailBody, 'email'> = useLocation().state;
+
+    const [confirmEmail] = authApi.useConfirmEmailMutation();
+
+    const onComplete = useCallback((code: string) => {
+        const body: ConfirmEmailBody = {
+            email: state.email,
+            code,
+        };
+        confirmEmail(body).then((responce) => {
+            if ('data' in responce) {
+                goToConfirmPassword();
+            } else {
+                setModal(false);
+            }
+        });
+    }, []);
 
     return (
-        <>
-            {!modal ? (
-                <ErrorModal
-                    className='error-modal_account-recovery'
-                    title={
-                        <>
-                            Введите код <br />
-                            для восстановления аккауанта
-                        </>
-                    }
-                    text={
-                        <>
-                            Мы отправили вам на e-mail <b>victorbyden@gmail.com</b> шестизначный
-                            код. Введите его в поле ниже.
-                        </>
-                    }
-                    img={attention}
-                >
-                    <VerificationInput
-                        placeholder={''}
-                        autoFocus={true}
-                        classNames={{
-                            character: 'character',
-                            characterSelected: 'character--selected',
-                            container: 'container',
-                        }}
-                    />
-                    <Typography.Text className='error-modal_account-recovery__text'>
-                        Не пришло письмо? Проверьте папку Спам.
-                    </Typography.Text>
-                </ErrorModal>
-            ) : (
-                <div>
-                    <IncorrectCode />
-                </div>
-            )}
-        </>
+        <ErrorModal
+            className='error-modal_account-recovery'
+            title={
+                modal ? (
+                    <>
+                        Введите код <br />
+                        для восстановления аккауанта
+                    </>
+                ) : (
+                    'Неверный код. Введите код для восстановления аккауанта'
+                )
+            }
+            text={
+                <>
+                    Мы отправили вам на e-mail <b>{state.email}</b> шестизначный код. Введите его в
+                    поле ниже.
+                </>
+            }
+            img={modal ? attention : error}
+        >
+            <VerificationInput
+                placeholder={''}
+                autoFocus={true}
+                onComplete={onComplete}
+                classNames={{
+                    character: 'character',
+                    characterSelected: 'character--selected',
+                    container: 'container',
+                }}
+            />
+            <Typography.Text className='error-modal_account-recovery__text'>
+                Не пришло письмо? Проверьте папку Спам.
+            </Typography.Text>
+        </ErrorModal>
     );
 };

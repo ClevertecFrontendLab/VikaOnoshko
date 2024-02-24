@@ -32,8 +32,8 @@ export const useAppNavigate = () => {
         goToErrorCheckEmail() {
             navigate(Path.ERROR_CHECK_EMAIL);
         },
-        goToConfirmEmail() {
-            navigate(Path.CONFIRM_EMAIL);
+        goToConfirmEmail(email: string) {
+            navigate(Path.CONFIRM_EMAIL, { state: { email } });
         },
         goToConfirmPassword() {
             navigate(Path.CHANGE_PASSWORD);
