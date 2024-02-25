@@ -8,20 +8,18 @@ import { PASSWORD_PATTERN } from '@common/constants';
 import { authApi } from '@api/auth.api';
 import { ApiError, CheckEmailBody, LoginBody } from '@common/types';
 import { useAppNavigate } from '@hooks/navigate';
+import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
+import { authSlice } from '@redux/auth.reducer';
 
 export const SigninForm: React.FC = () => {
+    const dispatch = useAppDispatch();
     const [hasErrors, setHasErrors] = useState(false);
-    const [canForgotPassword, setCanForgotPassword] = useState(false);
+    const [canForgotPassword, setCanForgotPassword] = useState(true);
     const [form] = Form.useForm();
     const { getFieldsError, getFieldValue, getFieldError } = form;
 
-    const {
-        goToHome,
-        goToErrorLogin,
-        goToErrorCheckEmailNoExist,
-        goToErrorCheckEmail,
-        goToConfirmEmail,
-    } = useAppNavigate();
+    const { goToErrorLogin, goToErrorCheckEmailNoExist, goToErrorCheckEmail, goToConfirmEmail } =
+        useAppNavigate();
 
     const onFieldsChange = useCallback(() => {
         const errors = getFieldsError();
@@ -44,7 +42,11 @@ export const SigninForm: React.FC = () => {
 
         login(body).then((responce) => {
             if ('data' in responce) {
-                goToHome();
+                dispatch(authSlice.actions.setAccessToken(responce.data.accessToken));
+
+                if (form.getFieldValue('rememberMe')) {
+                    localStorage.setItem('accessToken', responce.data.accessToken);
+                }
             } else {
                 goToErrorLogin();
             }
@@ -53,7 +55,17 @@ export const SigninForm: React.FC = () => {
 
     const [checkEmail] = authApi.useCheckEmailMutation();
 
-    const oncheckEmail = useCallback(() => {
+    const onClickForgotPassword = useCallback(() => {
+        const emailValue = getFieldValue('email');
+        const emailError = getFieldError('email');
+        const valide = !!emailValue && !emailError.length;
+
+        setCanForgotPassword(valide);
+
+        if (!valide) {
+            return;
+        }
+
         const body: CheckEmailBody = {
             email: form.getFieldValue('email'),
         };
@@ -115,7 +127,7 @@ export const SigninForm: React.FC = () => {
                         <Checkbox data-test-id='login-remember'>Запомнить меня</Checkbox>
                     </Form.Item>
                     <Button
-                        onClick={oncheckEmail}
+                        onClick={onClickForgotPassword}
                         className='signin-form__forgot-password'
                         type='link'
                         disabled={!canForgotPassword}

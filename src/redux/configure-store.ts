@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { createBrowserHistory } from 'history';
 import { createReduxHistoryContext } from 'redux-first-history';
 import { loaderSlice } from './loader.reducer';
+import { authSlice } from './auth.reducer';
 
 const { createReduxHistory, routerMiddleware, routerReducer } = createReduxHistoryContext({
     history: createBrowserHistory(),
@@ -14,6 +15,7 @@ export const store = configureStore({
         router: routerReducer,
         [authApi.reducerPath]: authApi.reducer,
         [loaderSlice.reducerPath]: loaderSlice.reducer,
+        [authSlice.reducerPath]: authSlice.reducer,
     },
     devTools: true,
     middleware: (getDefaultMiddleware) =>

@@ -6,7 +6,7 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { HistoryRouter } from 'redux-first-history/rr6';
 import { store, history } from '@redux/configure-store';
-import { routes } from '@routes/routes';
+import { Routes } from '@routes/routes';
 import { Loader } from '@components/loader/loader';
 
 const domNode = document.getElementById('root') as HTMLDivElement;
@@ -16,7 +16,9 @@ root.render(
     <React.StrictMode>
         <Provider store={store}>
             <Loader />
-            <HistoryRouter history={history}>{routes}</HistoryRouter>
+            <HistoryRouter history={history}>
+                <Routes />
+            </HistoryRouter>
         </Provider>
     </React.StrictMode>,
 );

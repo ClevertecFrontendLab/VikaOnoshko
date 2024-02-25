@@ -10,6 +10,7 @@ import {
     RegistrationBody,
     RegistrationResponse,
 } from '@common/types';
+import { authSlice } from '@redux/auth.reducer';
 import { loaderSlice } from '@redux/loader.reducer';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
@@ -33,9 +34,11 @@ export const authApi = createApi({
             async onQueryStarted(_, api) {
                 api.dispatch(loaderSlice.actions.setLoading(true));
 
-                api.queryFulfilled.finally(() =>
-                    api.dispatch(loaderSlice.actions.setLoading(false)),
-                );
+                api.queryFulfilled
+                    .then((response) => {
+                        api.dispatch(authSlice.actions.setAccessToken(response.data.accessToken));
+                    })
+                    .finally(() => api.dispatch(loaderSlice.actions.setLoading(false)));
             },
         }),
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { blue } from '@ant-design/colors';
 import Logo from '@public/logo.png';
 import SmallLogo from '@public/fit.png';
@@ -14,6 +14,8 @@ import {
 import { Layout, Menu, Space, Typography, Image, Button } from 'antd';
 
 import './slider.less';
+import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
+import { authSlice } from '@redux/auth.reducer';
 
 const { Sider } = Layout;
 
@@ -26,6 +28,11 @@ export const Slider: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
     const [size, setSize] = useState(SIZES.normal);
     const showIcon = size === SIZES.normal;
+    const dispath = useAppDispatch();
+
+    const onLogout = useCallback(() => {
+        dispath(authSlice.actions.logout());
+    }, []);
 
     return (
         <Sider
@@ -94,7 +101,7 @@ export const Slider: React.FC = () => {
             />
 
             <Space className='slider-footer'>
-                <Button className='slider-footer__button'>
+                <Button className='slider-footer__button' onClick={onLogout}>
                     <Image src={Exit} preview={false} className='slider-footer__img' />
                     {!collapsed && (
                         <Typography.Text className='slider-footer__text'>Выход</Typography.Text>
