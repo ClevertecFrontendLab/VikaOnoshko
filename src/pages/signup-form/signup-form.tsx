@@ -4,12 +4,14 @@ import { GooglePlusOutlined } from '@ant-design/icons';
 import './signup-form.less';
 
 import { PASSWORD_PATTERN } from '@common/constants';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { authApi } from '@api/auth.api';
 import { ApiError, RegistrationBody } from '@common/types';
 import { useAppNavigate } from '@hooks/navigate';
+import { useLocation } from 'react-router-dom';
 
 export const SignupForm: React.FC = () => {
+    const state: RegistrationBody = useLocation().state;
     const [hasErrors, setHasErrors] = useState(false);
 
     const [form] = Form.useForm();
@@ -30,16 +32,25 @@ export const SignupForm: React.FC = () => {
             email: form.getFieldValue('email'),
             password: form.getFieldValue('password'),
         };
-        registration(body).then((responce) => {
-            if ('data' in responce) {
-                goToResultSuccess();
-            } else if ((responce.error as ApiError).data.statusCode === 409) {
-                goToUserExist();
-            } else {
-                goToError();
-            }
-        });
+        registration(body)
+            .then((responce) => {
+                if ('data' in responce) {
+                    goToResultSuccess();
+                } else if ((responce.error as ApiError).data.statusCode === 409) {
+                    goToUserExist();
+                } else {
+                    goToError(body);
+                }
+            })
+            .catch(() => goToError(body));
     }, []);
+
+    useEffect(() => {
+        if (state) {
+            form.setFieldsValue({ ...state, repeatPassword: state.password });
+            onFinish();
+        }
+    }, [state]);
 
     return (
         <Auth activeForm='signup'>

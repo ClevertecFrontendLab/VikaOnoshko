@@ -1,4 +1,5 @@
 import { Path } from '@common/enums';
+import { RegistrationBody } from '@common/types';
 import { useNavigate } from 'react-router-dom';
 
 export const useAppNavigate = () => {
@@ -11,8 +12,8 @@ export const useAppNavigate = () => {
         goToSignIn() {
             navigate(Path.SIGN_IN);
         },
-        goToSignUp() {
-            navigate(Path.SIGN_UP);
+        goToSignUp(state?: RegistrationBody) {
+            navigate(Path.SIGN_UP, { state });
         },
         goToErrorLogin() {
             navigate(Path.ERROR_LOGIN);
@@ -23,8 +24,8 @@ export const useAppNavigate = () => {
         goToUserExist() {
             navigate(Path.USER_EXIST);
         },
-        goToError() {
-            navigate(Path.ERROR);
+        goToError(state: RegistrationBody) {
+            navigate(Path.ERROR, { state });
         },
         goToErrorCheckEmailNoExist() {
             navigate(Path.ERROR_CHECK_EMAIL_NO_EXIST);
