@@ -1,5 +1,5 @@
 import { Path } from '@common/enums';
-import { RegistrationBody } from '@common/types';
+import { CheckEmailBody, RegistrationBody } from '@common/types';
 import { useNavigate } from 'react-router-dom';
 
 export const useAppNavigate = () => {
@@ -9,8 +9,8 @@ export const useAppNavigate = () => {
         goToHome() {
             navigate(Path.HOME);
         },
-        goToSignIn() {
-            navigate(Path.SIGN_IN);
+        goToSignIn(state?: CheckEmailBody) {
+            navigate(Path.SIGN_IN, { state });
         },
         goToSignUp(state?: RegistrationBody) {
             navigate(Path.SIGN_UP, { state });
@@ -30,8 +30,8 @@ export const useAppNavigate = () => {
         goToErrorCheckEmailNoExist() {
             navigate(Path.ERROR_CHECK_EMAIL_NO_EXIST);
         },
-        goToErrorCheckEmail() {
-            navigate(Path.ERROR_CHECK_EMAIL);
+        goToErrorCheckEmail(state: CheckEmailBody) {
+            navigate(Path.ERROR_CHECK_EMAIL, { state });
         },
         goToConfirmEmail(email: string) {
             navigate(Path.CONFIRM_EMAIL, { state: { email } });

@@ -1,7 +1,7 @@
 import { Button, Checkbox, Form, Input, Space } from 'antd';
 import { Auth } from '../../components/auth';
 import { GooglePlusOutlined } from '@ant-design/icons';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import './signin-form.less';
 import { PASSWORD_PATTERN } from '@common/constants';
@@ -10,8 +10,10 @@ import { ApiError, CheckEmailBody, LoginBody } from '@common/types';
 import { useAppNavigate } from '@hooks/navigate';
 import { useAppDispatch } from '@hooks/typed-react-redux-hooks';
 import { authSlice } from '@redux/auth.reducer';
+import { useLocation } from 'react-router-dom';
 
 export const SigninForm: React.FC = () => {
+    const state: CheckEmailBody = useLocation().state;
     const dispatch = useAppDispatch();
     const [hasErrors, setHasErrors] = useState(false);
     const [canForgotPassword, setCanForgotPassword] = useState(true);
@@ -78,10 +80,17 @@ export const SigninForm: React.FC = () => {
             ) {
                 goToErrorCheckEmailNoExist();
             } else {
-                goToErrorCheckEmail();
+                goToErrorCheckEmail(body);
             }
         });
     }, []);
+
+    useEffect(() => {
+        if (state) {
+            form.setFieldsValue(state);
+            onClickForgotPassword();
+        }
+    }, [state]);
 
     return (
         <Auth activeForm='signin'>
